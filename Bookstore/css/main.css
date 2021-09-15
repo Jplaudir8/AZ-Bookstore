@@ -40,14 +40,33 @@ body {
     font-family: var(--primary-font-family);
 }
 
+
+
 .searchBox input[type="submit"] {
-    margin-left: 0.4em; /* 6.4px */
+    position: absolute; /* to position magnifier against form */
+    right: 16px; /*  */
+    top: .8em;
+
     border: 0;
     width: 1.25em;
     background: transparent url("../images/search-icon.svg") no-repeat center;
+    cursor: pointer;
+}
+
+.searchBox input[type="search"] {
+    margin: .5em 8px .5em .5em;
+    padding: 2px 30px 2px 10px;
+    height: 1.8em;
+    width: 95%;
+    min-width: 200px;
 }
 
 .searchBox input[type="search"]::placeholder {
     font-size: .75em;
     color: #8a8b8d;
 }
+
+.searchBox form {
+    position: relative; /* used to help position the magnifier */
+}
+

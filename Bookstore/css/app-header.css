@@ -4,10 +4,22 @@ header {
     justify-content: space-between;
 }
 
-#store-name {
+#bookshelf-name {
     color: white;
     font-family: var(--title-font-family);
-    font-size: 1.9em; /* 32px */
+    font-size: 1.5em; /* 24px */
+    margin: .3em 0 0 0;
+}
+
+#bookshelf-logo {
+    width: 100px;
+}
+
+#logo-and-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1.25em 2.5em 1.25em 2.5em;
 }
 
 .logo-and-categories {
@@ -16,6 +28,9 @@ header {
     align-items: center;
 }
 
+
+
+/* Categories Button */
 
 .categories-btn, .user-btn, .cart-btn {
     background: transparent;
@@ -42,11 +57,65 @@ header {
     
 }
 
+.categories-btn {
+    position: relative;
+    padding: 0 0 .2em 0;
+}
+
 .categories-btn i {
     margin-right: .4em;
 }
 
+/* Searchbox */
+
 .searchBox-user-cart {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    padding: 0 3em 0 0;
+    width: 60%;
 }
+
+
+/* User and Cart Buttons */
+
+.searchBox-user-cart button {
+    margin-left: 1em;
+}
+
+.searchBox-user-cart button i {
+    margin-left: .5em;
+}
+
+.categories-list a,
+.categories-list a:visited {
+    display: inline-block;
+    width: 100%;
+    color: #000;
+}
+
+
+.logo-and-categories .categories-list {
+    position: absolute;
+    visibility: hidden;
+    border: 1px solid #144D98;
+    background-color: white;
+    
+}
+
+/* reminder: this action only worked because what we are hovering on(.categories-btn-and-list) is the parent of .categories-list */
+.logo-and-categories .categories-btn-and-list:hover .categories-list {
+    visibility: visible;
+}
+
+.logo-and-categories .categories-list li a {
+    padding: .8em 1em;
+    font-size: 0.9em;
+    width: 78.9%;
+}
+
+ul.categories-list li a:not(.selected):hover {
+    background-color: #eaeaea;
+
+}
+
