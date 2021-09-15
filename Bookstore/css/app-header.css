@@ -30,7 +30,7 @@ header {
 
 
 
-/* Categories Button */
+
 
 .categories-btn, .user-btn, .cart-btn {
     background: transparent;
@@ -44,18 +44,25 @@ header {
     font-weight: 700;
 }
 
-.categories-btn:hover, .user-btn:hover, .cart-btn:hover{
+.categories-btn:hover {
     background: transparent;
     box-shadow: 0px 0px 0px transparent;
     border: 0px solid transparent;
     text-shadow: 0px 0px 0px transparent;
 }
 
-.categories-btn:active, .user-btn:active, .cart-btn:active{
+.categories-btn:active, .user-btn:active, .cart-btn:active {
     outline: none;
     border: none;
-    
 }
+
+.user-btn, .cart-btn {
+    border: 1px solid white;
+    border-radius: 2px;
+    padding: .4em;
+}
+
+/* Categories Button */
 
 .categories-btn {
     position: relative;
