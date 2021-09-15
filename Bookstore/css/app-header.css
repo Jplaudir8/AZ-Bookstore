@@ -1,0 +1,52 @@
+header {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+}
+
+#store-name {
+    color: white;
+    font-family: var(--title-font-family);
+    font-size: 1.9em; /* 32px */
+}
+
+.logo-and-categories {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.categories-btn, .user-btn, .cart-btn {
+    background: transparent;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+    cursor: pointer;
+    
+    color: white;
+    font-family: var(--secondary-font-family);
+    font-weight: 700;
+}
+
+.categories-btn:hover, .user-btn:hover, .cart-btn:hover{
+    background: transparent;
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    text-shadow: 0px 0px 0px transparent;
+}
+
+.categories-btn:active, .user-btn:active, .cart-btn:active{
+    outline: none;
+    border: none;
+    
+}
+
+.categories-btn i {
+    margin-right: .4em;
+}
+
+.searchBox-user-cart {
+    display: flex;
+    align-items: center;
+}

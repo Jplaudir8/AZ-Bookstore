@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bookstore web application for CS5244">
+
+    <!-- Inserting own fontawesome kit cdn -->
+    <script src="https://kit.fontawesome.com/7d4f3ac3a2.js" crossorigin="anonymous"></script>
+    <title>AZ Bookshelf - Home</title>
+
+    <link rel="stylesheet" href="css/normalize-and-reset.css">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/app-header.css">
+
+</head>
+<body>
+    <header>
+        <div class="flex-item logo-and-categories">
+            <!-- give the browser a chance to hold this space by providing a width and height on all static image references as such -->
+            <div>
+                <a href="index.html"><img src="/images/Bookshelf Logo.png" width="140"></a>
+                <a href="index.html"><h1 id="store-name">A-Z Bookshelf</h1></a>
+            </div>
+            <div>
+                <button class="categories-btn"><i class="fas fa-caret-down"></i>Categories</button>
+            </div>    
+        </div>
+        
+        <div class="flex-item searchBox-user-cart">
+            <div class="searchBox">
+                <form action="GET">
+                    <input type="search" name="" id="" placeholder="Search by author, title, ISBN">
+                    <input type="submit" value="">
+                </form>
+            </div>
+            
+            <button class="user-btn">Log in<i class="fas fa-user"></i></button>
+            
+            <button class="cart-btn">Cart<i class="fas fa-shopping-cart"></i></button>
+        </div>
+    </header>
+</body>
+</html>

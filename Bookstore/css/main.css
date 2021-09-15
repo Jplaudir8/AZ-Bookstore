@@ -1,0 +1,53 @@
+
+
+/* GOOGLE FONTS */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&display=swap');
+
+/* CUSTOM PROPERTIES */
+
+/*
+  The :root selector matches the document's root element.
+  In HTML, the root element is always html. By convention,
+  custom properties are always defined in :root (not in html).
+*/
+:root {
+  --title-font-family: "Caveat Brush", cursive;
+  --primary-font-family: "Poppins", sans-serif;
+  --secondary-font-family: "Quattrocento", serif;
+  /* 
+    16px is the default font size set by browswers in the html tag.
+    This should never be changed so that vision-impared users can override it.
+    Therefore, 1rem (root em) is the width of an em-dash at 16px.
+    If you want a differnt default size for your site, change it in the body tag.
+    For example, if you want 20px, then set the size to 20/16 = 1.25rem.
+  */
+  --default-font-size: 1.25rem;
+  /* --default-text-color: #111; */
+  /* --neutral-color: #4e4e4e; */
+
+  --primary-color: #144D98;
+  --primary-color-dark: #2D3442;
+
+  /* --primary-background-color: whitesmoke; */
+  --secondary-background-color: #D6E4F5;
+  --cta-color: #FF9900;
+}
+
+body {
+    font-family: var(--primary-font-family);
+}
+
+.searchBox input[type="submit"] {
+    margin-left: 0.4em; /* 6.4px */
+    border: 0;
+    width: 1.25em;
+    background: transparent url("../images/search-icon.svg") no-repeat center;
+}
+
+.searchBox input[type="search"]::placeholder {
+    font-size: .75em;
+    color: #8a8b8d;
+}
