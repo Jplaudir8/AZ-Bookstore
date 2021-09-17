@@ -1,19 +1,48 @@
 .home-page-content {
-    background-image: url(/images/hero-img.jpg);
+    background-image: url(/images/hero-img12.png);
     text-align: center;
-    background-position: center center;
+    background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
     padding: .3em;
+
+    flex-grow: 1;
+    overflow: auto;
 }
 
 .home-page-content h1 {
     font-family: var(--secondary-font-family);
     font-weight: bolder;
     font-size: 2rem;
-    margin: 1em;
+    width: 600px;
+    margin: 2em auto .4em;
 }
 
-.some-categories {
+.home-page-content h1 span {
+    background: black;
+    opacity: .8;
+    color: white;
+    padding: .2em .5em;
+    line-height: 1.7em;
+    box-shadow: 0 4px 4px 0 var(--drop-shadow-1);
+}
+
+.home-page-content .some-categories {
     display: flex;
+    justify-content: space-between;
+    margin: 1em 4em;
+}
+
+.home-page-content .some-categories .a-category {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-page-content .some-categories img {
+    margin: 1em .5em .5em;
+}
+
+.home-page-content .some-categories button {
+    margin: 1em .5em;
+    
 }

@@ -34,13 +34,18 @@
   /* --primary-background-color: whitesmoke; */
   --secondary-background-color: #D6E4F5;
   --cta-color: #FF9900;
+  --drop-shadow-1: #727272;
+}
+
+html, body {
+    height: 100%;
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     font-family: var(--primary-font-family);
 }
-
-
 
 .searchBox input[type="submit"] {
     position: absolute; /* to position magnifier against form */
@@ -72,3 +77,22 @@ body {
     position: relative; /* used to help position the magnifier */
 }
 
+.cta-button {
+    margin: 3em 1em;
+    padding: 1em .7em;
+    background-color: var(--cta-color);
+    border: 0;
+    border-radius: .2em;
+    box-shadow: 0 4px 4px 0 var(--drop-shadow-1);
+    font-weight: 500; /* medium */
+    cursor: pointer;
+}
+
+.secondary-button {
+    padding: .8em;
+    background-color: var(--secondary-background-color);
+    border: 0;
+    border-radius: .3em;
+    box-shadow: 0 4px 4px 0 var(--drop-shadow-1);
+    cursor: pointer;
+}

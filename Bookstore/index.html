@@ -15,12 +15,12 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/app-header.css">
+    <link rel="stylesheet" href="css/app-footer.css">
 
 </head>
 <body>
     <header>
-        <div class="flex-item logo-and-categories">
-            <!-- give the browser a chance to hold this space by providing a width and height on all static image references as such -->
+        <div class="logo-and-categories">
             <div id="logo-and-name">
                 <a href="index.html"><img src="/images/Bookshelf-logo.png" id="bookshelf-logo"></a>
                 <a href="index.html"><h1 id="bookshelf-name">A-Z Bookshelf</h1></a>
@@ -37,7 +37,7 @@
             </div>    
         </div>
         
-        <div class="flex-item searchBox-user-cart">
+        <div class="searchBox-user-cart">
             <div class="searchBox">
                 <form action="GET">
                     <input type="search" name="" id="" placeholder="Search by author, title, ISBN">
@@ -51,22 +51,49 @@
         </div>
     </header>
 
-    <section class="home-page-content" height="70vh">
-        <h1>We have them all from A to Z.<br>
-        Your best bookstore of all times.</h1>
-        <button>Explore the Shelf</button>
+    <section class="home-page-content">
+        <h1><span>We have them all from A to Z.</span><br>
+            <span>Your best bookstore of all times.</span>
+        </h1>
+        <button class="cta-button">Explore the Shelf</button>
         <div class="some-categories">
-            <div>
-                <img src="/images/book-1.png" alt="101 essays that will change the way you think">
-                <img src="/images/book-2.png" alt="comedy comedy comedy drama: a memoir">
-                <button>Best Sellers</button>
+            <div class="a-category">
+                <div>
+                    <img src="/images/book-1.png" alt="101 essays that will change the way you think">
+                    <img src="/images/book-2.png" alt="comedy comedy comedy drama: a memoir">
+                </div>
+                <button class="secondary-button">Best Sellers</button>
             </div>
-            <div>
-                <img src="/images/book-3.png" alt="comedy comedy comedy drama: a memoir">
-                <img src="/images/book-4.png" alt="comedy comedy comedy drama: a memoir">
-                <button>On Sale</button>
+    
+            <div class="a-category">
+                <div>
+                    <img src="/images/book-3.png" alt="comedy comedy comedy drama: a memoir">
+                    <img src="/images/book-4.png" alt="comedy comedy comedy drama: a memoir">
+                </div>
+                <button class="secondary-button">On Sale</button>
             </div>
         </div>
     </section>
+
+
+
+    <footer>
+        <div class=level-1>
+            <div class="footer-links-wrapper">
+                <a href="_blank" class="footer-link">About</a>
+                <a href="_blank" class="footer-link">Contact</a>
+                <a href="_blank" class="footer-link">Locations</a>
+            </div>
+            <div class="footer-social">
+                <p>Follow us:</p>
+                <a href="https://www.google.com/" class="footer-link"><i class="fab fa-facebook-square"></i></a>
+                <a href="https://www.google.com/" class="footer-link"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.google.com/" class="footer-link"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="level-2">
+            <p>&copy A-Z Bookshelf 2021</p>
+        </div>
+    </footer>
 </body>
 </html>
