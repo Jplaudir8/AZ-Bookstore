@@ -94,7 +94,27 @@ header {
 }
 
 .searchBox-user-cart .cart-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 30px;
+    height: 30px; */
     font-size: 1.4em;
+}
+
+.searchBox-user-cart .cart-btn .counter-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 22px;
+    height: 22px;
+    background-color: var(--primary-color-dark);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .6em;
 }
 
 .categories-list a,
