@@ -126,6 +126,7 @@ header {
 
 
 .logo-and-categories .categories-list {
+    z-index: 2;
     position: absolute;
     visibility: hidden;
     border: 1px solid #144D98;
@@ -145,7 +146,7 @@ header {
 }
 
 ul.categories-list li a:not(.selected):hover {
-    background-color: #eaeaea;
-
+    /* background-color: #eaeaea; */
+    background-color: var(--secondary-background-color);
 }
 

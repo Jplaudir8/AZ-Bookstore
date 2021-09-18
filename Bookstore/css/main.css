@@ -79,11 +79,12 @@ body {
 
 .cta-button {
     margin: 3em 1em;
-    padding: 1em .7em;
+    padding: 1.2em 1.3em;
     background-color: var(--cta-color);
     border: 0;
     border-radius: .2em;
     box-shadow: 0 4px 4px 0 var(--drop-shadow-1);
+    font-size: 1.1em;
     font-weight: 500; /* medium */
     cursor: pointer;
 }
