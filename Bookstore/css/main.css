@@ -106,6 +106,7 @@ body {
     border-radius: .2em;
     color: white;
     cursor: pointer;
+    font-size: .8em;
 }
 
 a:visited, a:active {
