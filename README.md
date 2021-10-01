@@ -12,5 +12,5 @@ This Application has been developed using Vue 2 (with the current latest 14.x.x 
 
 ## EER Diagram of Database
 <p align="center">
-    <img src="" height="510" alt="EER Diagram" title="EER Diagram">
+    <img src="https://github.com/Jplaudir8/AZ-Bookstore/blob/main/EER%20Bookstore%20Diagram.png" height="510" alt="EER Diagram" title="EER Diagram">
 </p>
