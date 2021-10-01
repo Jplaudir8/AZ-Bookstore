@@ -8,7 +8,9 @@ This folder contains only the client side of the application. This was the first
 This folder contains the second increment of the development. Consists of the front-end side of the application where the html and css files have been translated into Vue JS components. Also here we added the server side of the application which is built with Java (No Frameworks).
 
 #### Additional Details
-This Application has been developed using Vue 2 (with the current latest 14.x.x LTS version of Node) and ran on top of Apache 9.0.53
+- Developed using Vue 2 (with the current latest 14.x.x LTS version of Node).
+- Ran on top of Apache 9.0.53 for development and testing environments and production was on a VT's server.
+- Gradle was used as the packaging/manager tool for the development of the back-end side of the SPA.
 
 ## EER Diagram of A-Z Bookstore Database
 <p align="center">
