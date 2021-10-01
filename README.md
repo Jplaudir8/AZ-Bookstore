@@ -10,7 +10,7 @@ This folder contains the second increment of the development. Consists of the fr
 #### Additional Details
 This Application has been developed using Vue 2 (with the current latest 14.x.x LTS version of Node) and ran on top of Apache 9.0.53
 
-## EER Diagram of Database
+## EER Diagram of A-Z Bookstore Database
 <p align="center">
-    <img src="https://github.com/Jplaudir8/AZ-Bookstore/blob/main/EER%20Bookstore%20Diagram.png" height="510" alt="EER Diagram" title="EER Diagram">
+    <img src="https://github.com/Jplaudir8/AZ-Bookstore/blob/main/EER%20Bookstore%20Diagram.png" height="530" alt="EER Diagram" title="EER Diagram">
 </p>
