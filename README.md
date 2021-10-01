@@ -9,3 +9,8 @@ This folder contains the second increment of the development. Consists of the fr
 
 #### Additional Details
 This Application has been developed using Vue 2 (with the current latest 14.x.x LTS version of Node) and ran on top of Apache 9.0.53
+
+## EER Diagram of Database
+<p align="center">
+    <img src="" height="510" alt="EER Diagram" title="EER Diagram">
+</p>
