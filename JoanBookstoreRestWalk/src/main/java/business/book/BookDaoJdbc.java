@@ -86,7 +86,9 @@ public class BookDaoJdbc implements BookDao {
         } catch (SQLException e) {
             throw new BookstoreQueryDbException("Encountered a problem finding books by category ID " + categoryId, e);
         }
-        while (randomBooks.size() <= limit) {
+
+        // Second condition is added to break loop in case limit is > number of existing books
+        while (randomBooks.size() < limit && randomBooks.size() != books.size()) {
             int randomBookIndex = generator.nextInt(books.size());
             Book randomBook = books.get(randomBookIndex); // grabbing random book
             // only take book if it has not been seen previously
@@ -96,7 +98,6 @@ public class BookDaoJdbc implements BookDao {
         }
         return randomBooks;
     }
-
 
     private Book readBook(ResultSet resultSet) throws SQLException {
         long bookId = resultSet.getLong("book_id");
