@@ -1,0 +1,50 @@
+DELETE FROM book;
+ALTER TABLE book AUTO_INCREMENT = 1001;
+
+DELETE FROM category;
+ALTER TABLE category AUTO_INCREMENT = 1001;
+
+INSERT INTO `category` (`name`) VALUES ('Business'),('Best Seller'),('On Sale'),('Mystery'), ('Science Fiction');
+
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The successful entrepreneur: A guide to entrepreneurship', 'Liberty Chidziwa', '', 2800, 0, TRUE, FALSE, 1001);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Atomic Habits', 'James Clear', '', 2241, 0, TRUE, FALSE, 1001);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The first Year as the CEO of a Company', 'Aspatore Books Staff', '', 2800, 0, FALSE, FALSE, 1001);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Grit: the power of passion and perseverance', 'Angela Duckworth', '', 3000, 0, TRUE, FALSE, 1001);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Startup Guide: 10 Proven Steps to Your Successful Business', 'Jerry Kershen', '', 2800, 0, FALSE, FALSE, 1001);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Small Business Owner\'s Guide to Alternative Funding', 'Karlene Sinclair-Robinson', '', 2495, 0, TRUE, FALSE, 1001);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Pocket Small Business Owner\'s Guide to Your Business', 'Kevine Devine', '', 4126, 0, TRUE, FALSE, 1001);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Frontiers in Entrepreneurship', 'Boris Urban', '', 2495, 0, TRUE, FALSE, 1001);
+
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('101 Essays That Will Change The Way You Think', 'Brianna Wiest', '', 2500, 0, TRUE, FALSE, 1002);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Comedy Comedy Comedy Drama: A Memoir', 'Bob Odenkirk', '', 2600, 0, TRUE, FALSE, 1002);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('American Marxism', 'Mark R. Levin', '', 1674, 0, FALSE, FALSE, 1002);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Four Agreements: A Practical Guide to Personal Freedom', 'Don Miguel Ruiz', '', 2200, 0, TRUE, FALSE, 1002);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Boy, the MOle, the Fox and the Horse', 'Charlie Mackesy', '', 1200, 0, TRUE, FALSE, 1002);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Midnight Library', 'Matt Haig', '', 1329, 0, FALSE, FALSE, 1002);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Four Winds', 'Kristin Hannah', '', 1449, 0, FALSE, FALSE, 1002);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Rich Dad Poor Dad', 'Robert T. Kiyosaki', '', 1136, 0, TRUE, FALSE, 1002);
+
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Overstory: A Novel', 'Richard Powers', '', 1559, 0, TRUE, FALSE, 1003);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Fairview', 'Jackie Sibblies Drury', '', 1489, 0, FALSE, FALSE, 1003);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Frederick Douglass: Prophet of Freedom', 'David W. Blight', '', 1489, 0, TRUE, FALSE, 1003);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The New Negro: The life of Alain Locke', 'Jeffrey C. Stewart', '', 2795, 0, TRUE, FALSE, 1003);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Be With', 'Forrest Gander', '', 1000, 0, FALSE, FALSE, 1003);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Amity and Prosperity: One Family and the Fracturing', 'Eliza Griswold', '', 1199, 0, TRUE, FALSE, 1003);
+
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('A Solitude of Wolverines', 'Alice Henderson', '', 1399, 0, TRUE, FALSE, 1004);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Greatest Beer Run Ever: A Memoir of Friendship, Loyalty', 'John Donohue', '', 1740, 0, TRUE, FALSE, 1004);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Thursday Murder Club: A Novel', 'Richard Osman', '', 1999, 0, TRUE, FALSE, 1004);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Guest List', 'Lucy Foley', '', 1913, 0, FALSE, FALSE, 1004);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Rebecca', 'Daphne Du Maurier', '', 1399, 0, FALSE, FALSE, 1004);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The silent Patient', 'Alex Michaelides', '', 1299, 0, TRUE, FALSE, 1004);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('For Whom the Book Tolls', 'Laura Gail Black', '', 1299, 0, TRUE, FALSE, 1004);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Butterfly House', 'Katrine Engberg', '', 1399, 0, FALSE, FALSE, 1004);
+
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Ministry for the Future', 'Kim Stanley Robinson', '', 2399, 0, FALSE, FALSE, 1005);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Shards of Earth', 'Adrian Tchaikovsky', '', 1499, 0, TRUE, FALSE, 1005);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Blood from a Stone: A Time Travel Thriller', 'David James Warren', '', 1299, 0, TRUE, FALSE, 1005);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Untitled Jack Ryan, Jr. #9', 'Don Bentley', '', 1499, 0, FALSE, FALSE, 1005);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Insecure Mind of Sergei Kraev', 'Eric Silberstein', '', 1299, 0, TRUE, FALSE, 1005);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The God Equation: The Quest for a Theory of Everything', 'Michio Kaku', '', 1399, 0, TRUE, FALSE, 1005);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Backyard Starship', 'Terry Maggert', '', 2999, 0, TRUE, FALSE, 1005);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Forgotten Ruin: An Epic Military Fantasy Thriller', 'Jason Anspach', '', 1999, 0, FALSE, FALSE, 1005);
