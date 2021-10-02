@@ -9,7 +9,6 @@ import business.category.CategoryDaoJdbc;
 public class ApplicationContext {
 
     private BookDao bookDao;
-
     private CategoryDao categoryDao;
 
     public static ApplicationContext INSTANCE = new ApplicationContext();

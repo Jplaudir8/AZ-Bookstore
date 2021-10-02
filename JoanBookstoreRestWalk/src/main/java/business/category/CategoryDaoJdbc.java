@@ -60,11 +60,20 @@ public class CategoryDaoJdbc implements CategoryDao {
     }
 
     @Override
-    public Category findByName(String name) {
+    public Category findByName(String categoryName) {
         Category category = null;
 
-        // TODO: Finish implementing this method
-
+        try (Connection connection = JdbcUtils.getConnection();
+             PreparedStatement statement = connection.prepareStatement(FIND_BY_NAME_SQL)) {
+            statement.setString(1, categoryName);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    category = readCategory(resultSet);
+                }
+            }
+        } catch (SQLException e) {
+            throw new BookstoreQueryDbException("Encountered a problem finding category name " + categoryName, e);
+        }
         return category;
     }
 

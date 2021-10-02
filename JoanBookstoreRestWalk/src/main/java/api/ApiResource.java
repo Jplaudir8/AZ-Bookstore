@@ -87,12 +87,10 @@ public class ApiResource {
         try {
             return bookDao.findRandomByCategoryId(categoryId, limit);
         } catch (Exception e) {
-            throw new ApiException("products lookup via categoryName failed", e);
+            throw new ApiException("products lookup via category-id failed", e);
         }
     }
 
-    // TODO Implement the following APIs
-    // categories/name/{category-name}
     @GET
     @Path("categories/name/{category-name}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -101,16 +99,36 @@ public class ApiResource {
                                      @Context HttpServletRequest request) {
         try {
             Category result = categoryDao.findByName(categoryName);
-            if(result == null) {
+            if (result == null) {
                 throw new ApiException(String.format("No such category-name: %d", categoryName));
             }
             return result;
         } catch (Exception e) {
-            throw new ApiException("products lookup via categoryName %d failed", e);
+            throw new ApiException("products lookup via category-name %d failed", e);
         }
     }
-    // categories/name/{category-name}/books
+
+    @GET
+    @Path("categories/name/{category-name}/books")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Book> booksByCategoryName(@PathParam("category-name") String categoryName,
+                                   @QueryParam("limit") @DefaultValue("3") int limit,
+                                   @Context HttpServletRequest request) {
+        try {
+            Category categoryResult = categoryDao.findByName(categoryName);
+            List<Book> bookResult = bookDao.findByCategoryId(categoryResult.getCategoryId());
+            if (bookResult == null) {
+                throw new ApiException(String.format("No such books by category name: %d", categoryName));
+            }
+            return bookResult;
+        } catch (Exception e) {
+            throw new ApiException("products lookup via category-name %d failed", e);
+        }
+    }
+
     // categories/name/{category-name}/suggested-books
+    
+
     // categories/name/{category-name}/suggested-books?limit=#
 
 }
