@@ -54,7 +54,7 @@ public class CategoryDaoJdbc implements CategoryDao {
                 }
             }
         } catch (SQLException e) {
-            throw new BookstoreQueryDbException("Encountered a problem finding category " + categoryId, e);
+            throw new BookstoreQueryDbException("Encountered a problem finding category id " + categoryId, e);
         }
         return category;
     }

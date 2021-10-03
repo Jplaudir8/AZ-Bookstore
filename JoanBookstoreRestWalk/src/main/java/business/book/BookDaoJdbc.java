@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import business.BookstoreDbException.BookstoreQueryDbException;
 
@@ -45,7 +44,7 @@ public class BookDaoJdbc implements BookDao {
                 }
             }
         } catch (SQLException e) {
-            throw new BookstoreQueryDbException("Encountered a problem finding book " + bookId, e);
+            throw new BookstoreQueryDbException("Encountered a problem finding book by ID" + bookId, e);
         }
         return book;
     }
@@ -72,31 +71,20 @@ public class BookDaoJdbc implements BookDao {
     @Override
     public List<Book> findRandomByCategoryId(long categoryId, int limit) {
         List<Book> books = new ArrayList<>();
-        List<Book> randomBooks = new ArrayList<>();
-        Random generator = new Random();
 
         try (Connection connection = JdbcUtils.getConnection();
-             PreparedStatement statement = connection.prepareStatement(FIND_BY_CATEGORY_ID_SQL)) {
+             PreparedStatement statement = connection.prepareStatement(FIND_RANDOM_BY_CATEGORY_ID_SQL)) {
             statement.setLong(1, categoryId);
+            statement.setLong(2, limit);
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     books.add(readBook(resultSet));
                 }
             }
         } catch (SQLException e) {
-            throw new BookstoreQueryDbException("Encountered a problem finding books by category ID " + categoryId, e);
+            throw new BookstoreQueryDbException("Encountered a problem finding random books by category ID " + categoryId, e);
         }
-
-        // Second condition is added to break loop in case limit is > number of existing books
-        while (randomBooks.size() < limit && randomBooks.size() != books.size()) {
-            int randomBookIndex = generator.nextInt(books.size());
-            Book randomBook = books.get(randomBookIndex); // grabbing random book
-            // only take book if it has not been seen previously
-            if (!randomBooks.contains(randomBook)) {
-                randomBooks.add(randomBook);
-            }
-        }
-        return randomBooks;
+        return books;
     }
 
     private Book readBook(ResultSet resultSet) throws SQLException {

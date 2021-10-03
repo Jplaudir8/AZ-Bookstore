@@ -87,7 +87,7 @@ public class ApiResource {
         try {
             return bookDao.findRandomByCategoryId(categoryId, limit);
         } catch (Exception e) {
-            throw new ApiException("products lookup via category-id failed", e);
+            throw new ApiException("Books lookup by category-id failed", e);
         }
     }
 
@@ -95,7 +95,6 @@ public class ApiResource {
     @Path("categories/name/{category-name}")
     @Produces(MediaType.APPLICATION_JSON)
     public Category categoryByName(@PathParam("category-name") String categoryName,
-                                     @QueryParam("limit") @DefaultValue("3") int limit,
                                      @Context HttpServletRequest request) {
         try {
             Category result = categoryDao.findByName(categoryName);
@@ -104,7 +103,7 @@ public class ApiResource {
             }
             return result;
         } catch (Exception e) {
-            throw new ApiException("products lookup via category-name %d failed", e);
+            throw new ApiException("Category lookup by category-name %d failed", e);
         }
     }
 
@@ -112,7 +111,6 @@ public class ApiResource {
     @Path("categories/name/{category-name}/books")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Book> booksByCategoryName(@PathParam("category-name") String categoryName,
-                                   @QueryParam("limit") @DefaultValue("3") int limit,
                                    @Context HttpServletRequest request) {
         try {
             Category categoryResult = categoryDao.findByName(categoryName);
@@ -122,13 +120,26 @@ public class ApiResource {
             }
             return bookResult;
         } catch (Exception e) {
-            throw new ApiException("products lookup via category-name %d failed", e);
+            throw new ApiException("Books lookup by category-name %d failed", e);
         }
     }
 
-    // categories/name/{category-name}/suggested-books
-    
-
-    // categories/name/{category-name}/suggested-books?limit=#
+    @GET
+    @Path("categories/name/{category-name}/suggested-books")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Book> suggestedBooksByCategoryName(@PathParam("category-name") String categoryName,
+                                          @QueryParam("limit") @DefaultValue("3") int limit,
+                                          @Context HttpServletRequest request) {
+        try {
+            Category categoryResult = categoryDao.findByName(categoryName);
+            List<Book> bookResult = bookDao.findRandomByCategoryId(categoryResult.getCategoryId(), limit);
+            if (bookResult == null) {
+                throw new ApiException(String.format("No such books by category name: %d", categoryName));
+            }
+            return bookResult;
+        } catch (Exception e) {
+            throw new ApiException("Suggested books lookup via category-name %d failed", e);
+        }
+    }
 
 }
