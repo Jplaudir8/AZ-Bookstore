@@ -19,7 +19,7 @@ INSERT INTO `book` (title, author, description, price, rating, is_public, is_fea
 INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Comedy Comedy Comedy Drama: A Memoir', 'Bob Odenkirk', '', 2600, 0, TRUE, FALSE, 1002);
 INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('American Marxism', 'Mark R. Levin', '', 1674, 0, FALSE, FALSE, 1002);
 INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Four Agreements: A Practical Guide to Personal Freedom', 'Don Miguel Ruiz', '', 2200, 0, TRUE, FALSE, 1002);
-INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Boy, the MOle, the Fox and the Horse', 'Charlie Mackesy', '', 1200, 0, TRUE, FALSE, 1002);
+INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Boy, the Mole, the Fox and the Horse', 'Charlie Mackesy', '', 1200, 0, TRUE, FALSE, 1002);
 INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Midnight Library', 'Matt Haig', '', 1329, 0, FALSE, FALSE, 1002);
 INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('The Four Winds', 'Kristin Hannah', '', 1449, 0, FALSE, FALSE, 1002);
 INSERT INTO `book` (title, author, description, price, rating, is_public, is_featured, category_id) VALUES ('Rich Dad Poor Dad', 'Robert T. Kiyosaki', '', 1136, 0, TRUE, FALSE, 1002);

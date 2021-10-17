@@ -39,8 +39,33 @@
 </template>
 
 <script>
+import ApiService from "@/services/ApiService";
+
 export default {
   name: "HomeCategoryList",
+  data: function () {
+    return {
+      books: [],
+    };
+  },
+  created: function () {
+    console.log("Start fetchSuggestedBooksLimit2");
+    this.fetchSelectedCategoryBooks();
+    console.log("Finish fetchSuggestedBooksLimit2");
+  },
+  methods: {
+    fetchSelectedCategoryBooks() {
+      const vm = this; // vm stands for view model
+      ApiService.fetchSelectedCategoryBooks(this.$route.params.name)
+        .then((data) => {
+          console.log("Data: " + data);
+          vm.books = data;
+        })
+        .catch((reason) => {
+          console.log("Error: " + reason);
+        });
+    },
+  },
 };
 </script>
 

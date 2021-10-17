@@ -11,7 +11,6 @@
 
 <script>
 import CategoryBookListItem from "./CategoryBookListItem";
-// import ApiService from "@/services/ApiService";
 export default {
   name: "CategoryBookList",
   props: {

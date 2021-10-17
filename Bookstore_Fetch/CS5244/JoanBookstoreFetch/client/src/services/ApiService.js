@@ -34,9 +34,19 @@ export default {
         console.log("Error fetching category data", reason);
       });
   },
-  bookImageFileName: function (book) {
-    let name = book.title.toLowerCase();
-    name = name.replace(/ /g, "-");
-    return `${name}.jpg`;
+  fetchSuggestedBooksLimit2(categoryName) {
+    const url =
+      apiUrl + "/categories/name/" + categoryName + "/suggested-books?limit=2";
+    console.log("GET from " + url);
+    return fetch(url)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Network response was not ok.");
+      })
+      .catch((reason) => {
+        console.log("Error fetching category data", reason);
+      });
   },
 };

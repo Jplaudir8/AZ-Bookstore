@@ -2,7 +2,7 @@
   <div class="grid-item">
     <div class="book-and-read-now">
       <img
-        :src="require('@/assets/images/books/' + book.imageFile)"
+        :src="require('@/assets/images/books/' + this.bookImageFileName(book))"
         :alt="book.title"
       />
       <span v-if="book.isPublic" class="read-now-btn"
@@ -37,11 +37,22 @@ export default {
       required: true,
     },
   },
+  created: function () {},
+  methods: {
+    bookImageFileName: function (book) {
+      let name = book.title.toLowerCase();
+      name = name.replace(/ /g, "-");
+      name = name.replace(":", "");
+      name = name.replace(".", "");
+      name = name.replace("#", "");
+      return `${name}.png`;
+    },
+  },
 };
 </script>
 <style scoped>
 .grid-books .grid-item {
-  padding: 0.8em;
+  padding: 0.9em 0.8em 1.1em;
   max-width: 135px;
   /* border: 1px solid black; */
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
