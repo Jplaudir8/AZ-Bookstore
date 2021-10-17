@@ -68,6 +68,7 @@ nav .nav-link {
 
 nav .nav-link:not(.selected):hover {
   /* so that underlined color doesnt change for selected item */
+  transition: background-color 160ms ease-in;
   background-color: var(--primary-color-dark);
   color: var(--secondary-background-color);
 }

@@ -2,37 +2,33 @@
   <div class="some-categories">
     <div class="a-category">
       <div>
-        <img
-          src="@/assets/images/books/book-1.png"
-          alt="101 essays that will change the way you think"
-          title="101 essays that will change the way you think"
-        />
-        <img
-          src="@/assets/images/books/book-2.png"
-          alt="comedy comedy comedy drama: a memoir"
-          title="comedy comedy comedy drama: a memoir"
-        />
+        <template v-for="book in categoryAbooks">
+          <img
+            :src="require('@/assets/images/books/' + bookImageFileName(book))"
+            :key="book.bookId"
+            :alt="book.title"
+            :title="book.title"
+          />
+        </template>
       </div>
       <button class="secondary-button">
-        <router-link to="../category/best-sellers">Best Sellers</router-link>
+        <router-link to="../category/Best Seller">Best Sellers</router-link>
       </button>
     </div>
 
     <div class="a-category">
       <div>
-        <img
-          src="@/assets/images/books/book-3.png"
-          alt="grit: the power of passion and perseverance"
-          title="grit: thepower of passion and perseverance"
-        />
-        <img
-          src="@/assets/images/books/book-4.png"
-          alt="atomic habits"
-          title="atomic habits"
-        />
+        <template v-for="book in categoryBbooks">
+          <img
+            :src="require('@/assets/images/books/' + bookImageFileName(book))"
+            :key="book.bookId"
+            :alt="book.title"
+            :title="book.title"
+          />
+        </template>
       </div>
       <button class="secondary-button">
-        <router-link to="../category/on-sale">On Sale</router-link>
+        <router-link to="../category/On Sale">On Sale</router-link>
       </button>
     </div>
   </div>
@@ -45,25 +41,43 @@ export default {
   name: "HomeCategoryList",
   data: function () {
     return {
-      books: [],
+      categoryAbooks: [],
+      categoryBbooks: [],
     };
   },
   created: function () {
     console.log("Start fetchSuggestedBooksLimit2");
-    this.fetchSelectedCategoryBooks();
+    this.fetchSelectedBooksLimit2("Best Seller", "On Sale");
     console.log("Finish fetchSuggestedBooksLimit2");
   },
   methods: {
-    fetchSelectedCategoryBooks() {
+    fetchSelectedBooksLimit2(categoryAName, categoryBName) {
       const vm = this; // vm stands for view model
-      ApiService.fetchSelectedCategoryBooks(this.$route.params.name)
+      ApiService.fetchSuggestedBooksLimit2(categoryAName)
         .then((data) => {
           console.log("Data: " + data);
-          vm.books = data;
+          vm.categoryAbooks = data;
         })
         .catch((reason) => {
           console.log("Error: " + reason);
         });
+
+      ApiService.fetchSuggestedBooksLimit2(categoryBName)
+        .then((data) => {
+          console.log("Data: " + data);
+          vm.categoryBbooks = data;
+        })
+        .catch((reason) => {
+          console.log("Error: " + reason);
+        });
+    },
+    bookImageFileName: function (book) {
+      let name = book.title.toLowerCase();
+      name = name.replace(/ /g, "-");
+      name = name.replace(":", "");
+      name = name.replace(".", "");
+      name = name.replace("#", "");
+      return `${name}.png`;
     },
   },
 };
