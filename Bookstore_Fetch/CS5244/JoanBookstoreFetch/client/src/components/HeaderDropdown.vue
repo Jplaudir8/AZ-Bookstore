@@ -1,25 +1,50 @@
 <template>
   <ul class="categories-list">
-    <router-link to="../category/best-sellers" tag="li"
-      >Best Sellers</router-link
-    >
-    <router-link to="../category/on-sale" tag="li">On Sale</router-link>
-    <router-link to="../category/business" tag="li">Business</router-link>
-    <router-link to="../category/mystery" tag="li">Mystery</router-link>
-    <router-link to="../category/science-fiction" tag="li"
-      >Science Fiction</router-link
-    >
+    <template v-for="category in categories">
+      <router-link
+        :key="category.categoryId"
+        :to="'../category/' + category.name"
+        tag="li"
+      >
+        {{ category.name }}
+      </router-link>
+    </template>
   </ul>
 </template>
 
 <script>
+import ApiService from "@/services/ApiService";
+
 export default {
   name: "HeaderDropdownMenu",
+  data: function () {
+    return {
+      categories: [],
+    };
+  },
+  created: function () {
+    console.log("Start fetchCategories");
+    this.fetchCategories();
+    console.log("Finish fetchCategories");
+  },
+  methods: {
+    fetchCategories() {
+      const vm = this; // vm stands for view model
+      ApiService.fetchCategories()
+        .then((data) => {
+          console.log("Data: " + data);
+          vm.categories = data;
+        })
+        .catch((reason) => {
+          console.log("Error: " + reason);
+        });
+    },
+  },
 };
 </script>
 
 <style>
-  li {
-    cursor: pointer;
-  }
+li {
+  cursor: pointer;
+}
 </style>

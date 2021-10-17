@@ -1,22 +1,54 @@
 <template>
   <nav>
-    <router-link to="../category/best-sellers" class="nav-link"
-      >Best Sellers</router-link
-    >
-    <router-link to="../category/on-sale" class="nav-link">On Sale</router-link>
-    <router-link to="../category/business" class="nav-link selected"
-      >Business</router-link
-    >
-    <router-link to="../category/mystery" class="nav-link">Mystery</router-link>
-    <router-link to="../category/science-fiction" class="nav-link"
-      >Science Fiction</router-link
-    >
+    <template v-for="category in categories">
+      <router-link
+        v-if="category.name === $route.params.name"
+        :key="category.categoryId"
+        :to="'/category/' + category.name"
+        class="nav-link selected"
+      >
+        {{ category.name }}
+      </router-link>
+
+      <router-link
+        v-else
+        :key="category.categoryId"
+        :to="'/category/' + category.name"
+        class="nav-link"
+      >
+        {{ category.name }}
+      </router-link>
+    </template>
   </nav>
 </template>
 
 <script>
+import ApiService from "@/services/ApiService";
 export default {
   name: "CategoryNav",
+  data: function () {
+    return {
+      categories: [],
+    };
+  },
+  created: function () {
+    console.log("Start fetchCategories");
+    this.fetchCategories();
+    console.log("Finish fetchCategories");
+  },
+  methods: {
+    fetchCategories() {
+      const vm = this; // vm stands for view model
+      ApiService.fetchCategories()
+        .then((data) => {
+          console.log("Data: " + data);
+          vm.categories = data;
+        })
+        .catch((reason) => {
+          console.log("Error: " + reason);
+        });
+    },
+  },
 };
 </script>
 

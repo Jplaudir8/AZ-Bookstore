@@ -1,19 +1,17 @@
 <template>
   <div class="grid-books">
-    <category-book-list-item :book="books[0]"></category-book-list-item>
-    <category-book-list-item :book="books[1]"></category-book-list-item>
-    <category-book-list-item :book="books[2]"></category-book-list-item>
-    <category-book-list-item :book="books[3]"></category-book-list-item>
-    <category-book-list-item :book="books[4]"></category-book-list-item>
-    <category-book-list-item :book="books[5]"></category-book-list-item>
-    <category-book-list-item :book="books[6]"></category-book-list-item>
-    <category-book-list-item :book="books[7]"></category-book-list-item>
+    <template v-for="book in books">
+      <category-book-list-item
+        :book="book"
+        :key="book.bookId"
+      ></category-book-list-item>
+    </template>
   </div>
 </template>
 
 <script>
 import CategoryBookListItem from "./CategoryBookListItem";
-
+// import ApiService from "@/services/ApiService";
 export default {
   name: "CategoryBookList",
   props: {
