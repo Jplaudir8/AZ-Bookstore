@@ -113,6 +113,7 @@ header {
 
 .categories-btn .fa-caret-down {
   margin-right: 0.4em;
+  padding: 0.4em 0.1em;
 }
 
 /* Searchbox */
@@ -158,6 +159,7 @@ header {
   right: -10px;
   width: 22px;
   height: 22px;
+  padding: 0.01em;
   background-color: var(--primary-color-dark);
   border-radius: 50%;
   display: flex;
