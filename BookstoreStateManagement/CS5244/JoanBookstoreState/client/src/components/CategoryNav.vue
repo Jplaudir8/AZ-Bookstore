@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <template v-for="category in categories">
+    <template v-for="category in $store.state.categories">
       <router-link
         v-if="category.name === $route.params.name"
         :key="category.categoryId"
@@ -23,32 +23,8 @@
 </template>
 
 <script>
-import ApiService from "@/services/ApiService";
 export default {
   name: "CategoryNav",
-  data: function () {
-    return {
-      categories: [],
-    };
-  },
-  created: function () {
-    console.log("Start fetchCategories");
-    this.fetchCategories();
-    console.log("Finish fetchCategories");
-  },
-  methods: {
-    fetchCategories() {
-      const vm = this; // vm stands for view model
-      ApiService.fetchCategories()
-        .then((data) => {
-          console.log("Data: " + data);
-          vm.categories = data;
-        })
-        .catch((reason) => {
-          console.log("Error: " + reason);
-        });
-    },
-  },
 };
 </script>
 

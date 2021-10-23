@@ -16,6 +16,9 @@ export default {
     AppHeader,
     AppFooter,
   },
+  created: function () {
+    this.$store.dispatch("fetchCategories");
+  },
 };
 </script>
 

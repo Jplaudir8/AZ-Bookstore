@@ -46,9 +46,7 @@ export default {
     };
   },
   created: function () {
-    console.log("Start fetchSuggestedBooksLimit2");
     this.fetchSelectedBooksLimit2("Best Seller", "On Sale");
-    console.log("Finish fetchSuggestedBooksLimit2");
   },
   methods: {
     fetchSelectedBooksLimit2(categoryAName, categoryBName) {
