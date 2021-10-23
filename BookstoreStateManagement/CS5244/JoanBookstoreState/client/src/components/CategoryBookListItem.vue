@@ -22,7 +22,9 @@
         <button class="icon-w-text-btn">
           Add to Wishlist <i class="fas fa-heart"></i>
         </button>
-        <button class="cta-button cta-card">Add to Cart</button>
+        <button class="cta-button cta-card" @click="addToCart(book)">
+          Add to Cart
+        </button>
       </div>
     </div>
   </div>
@@ -39,6 +41,9 @@ export default {
   },
   created: function () {},
   methods: {
+    addToCart(book) {
+      this.$store.dispatch("addToCart", book);
+    },
     bookImageFileName: function (book) {
       let name = book.title.toLowerCase();
       name = name.replace(/ /g, "-");

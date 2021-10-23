@@ -1,6 +1,6 @@
 <template>
   <div class="grid-books">
-    <template v-for="book in books">
+    <template v-for="book in $store.state.selectedCategoryBooks">
       <category-book-list-item
         :book="book"
         :key="book.bookId"
@@ -13,12 +13,6 @@
 import CategoryBookListItem from "./CategoryBookListItem";
 export default {
   name: "CategoryBookList",
-  props: {
-    books: {
-      type: Array,
-      required: true,
-    },
-  },
   components: {
     CategoryBookListItem,
   },

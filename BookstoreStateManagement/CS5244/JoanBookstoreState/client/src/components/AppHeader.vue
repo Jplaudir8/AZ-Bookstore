@@ -26,7 +26,7 @@
 
       <button class="cart-btn">
         <i class="fas fa-shopping-cart"></i>
-        <span class="counter-badge">3</span>
+        <span class="counter-badge">{{ $store.state.cart.numberOfItems }}</span>
       </button>
     </div>
   </header>
