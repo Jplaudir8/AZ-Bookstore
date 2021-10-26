@@ -2,7 +2,7 @@
   <div class="some-categories">
     <div class="a-category">
       <div>
-        <template v-for="book in categoryAbooks">
+        <template v-for="book in $store.state.suggestedCategoryBooksA">
           <img
             :src="require('@/assets/images/books/' + bookImageFileName(book))"
             :key="book.bookId"
@@ -18,7 +18,7 @@
 
     <div class="a-category">
       <div>
-        <template v-for="book in categoryBbooks">
+        <template v-for="book in $store.state.suggestedCategoryBooksB">
           <img
             :src="require('@/assets/images/books/' + bookImageFileName(book))"
             :key="book.bookId"
@@ -35,40 +35,12 @@
 </template>
 
 <script>
-import ApiService from "@/services/ApiService";
-
 export default {
   name: "HomeCategoryList",
-  data: function () {
-    return {
-      categoryAbooks: [],
-      categoryBbooks: [],
-    };
-  },
   created: function () {
-    this.fetchSelectedBooksLimit2("Best Seller", "On Sale");
+    this.$store.dispatch("fetchSuggestedBooks");
   },
   methods: {
-    fetchSelectedBooksLimit2(categoryAName, categoryBName) {
-      const vm = this; // vm stands for view model
-      ApiService.fetchSuggestedBooksLimit2(categoryAName)
-        .then((data) => {
-          console.log("Data: " + data);
-          vm.categoryAbooks = data;
-        })
-        .catch((reason) => {
-          console.log("Error: " + reason);
-        });
-
-      ApiService.fetchSuggestedBooksLimit2(categoryBName)
-        .then((data) => {
-          console.log("Data: " + data);
-          vm.categoryBbooks = data;
-        })
-        .catch((reason) => {
-          console.log("Error: " + reason);
-        });
-    },
     bookImageFileName: function (book) {
       let name = book.title.toLowerCase();
       name = name.replace(/ /g, "-");
