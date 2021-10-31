@@ -24,10 +24,14 @@
 
       <button class="user-btn">JP</button>
 
-      <button class="cart-btn">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="counter-badge">{{ $store.state.cart.numberOfItems }}</span>
-      </button>
+      <router-link :to="'/cart'" class="nav-link selected">
+        <button class="cart-btn">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="counter-badge">{{
+            $store.state.cart.numberOfItems
+          }}</span>
+        </button>
+      </router-link>
     </div>
   </header>
 </template>
