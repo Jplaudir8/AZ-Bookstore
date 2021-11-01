@@ -4,9 +4,7 @@
       <h1>Your cart is empty... What about we grab some books?</h1>
       <img src="@/assets/images/empty-cart-image.png" />
       <button class="cta-button cta-small-empty">
-        <router-link :to="'/category/' + $store.state.selectedCategoryName"
-          >Explore the Shelf</router-link
-        >
+        <router-link to="../category/Business">Explore the Shelf</router-link>
       </button>
     </section>
     <section v-else class="outer-layout">
@@ -92,7 +90,7 @@ export default {
   background-color: var(--cta-color-on-hover);
 }
 .cta-small-empty {
-  font-size: 0.7em;
+  font-size: 0.6em;
 }
 
 .secondary-button-cart:hover {
