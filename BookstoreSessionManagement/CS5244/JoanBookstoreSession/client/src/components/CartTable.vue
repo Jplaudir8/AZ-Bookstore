@@ -2,9 +2,9 @@
   <div class="cart-table">
     <p class="table-head">Book</p>
     <p class="table-head">Title</p>
-    <p class="table-head unit-price-column-header">Unit Price</p>
+    <p class="unit-price-column-header">Unit Price</p>
     <p class="table-head">Quantity</p>
-    <p class="table-head amount-column-header">Amount</p>
+    <p class="amount-column-header">Amount</p>
     <template v-for="item in $store.state.cart.items">
       <img
         :key="item.book.bookId"
@@ -54,12 +54,13 @@ export default {
 <style>
 .cart-table {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 0.1fr;
   grid-gap: 1em 0;
   align-items: center;
   justify-content: center;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
-  padding: 0 0 1em 0;
+  margin: 2em 0;
+  padding: 0 0 2em 0;
 }
 .cart-table .table-head {
   background-color: #eaeaea;
@@ -69,11 +70,13 @@ export default {
 .cart-table img {
   width: 50%;
   min-width: 70px;
+  max-width: 100px;
   margin: 0 auto;
 }
 .unit-price-column-header {
+  background-color: #eaeaea;
+  padding: 0.8em 1.2em;
   text-align: right;
-  padding: 0 3em;
 }
 .unit-price-column {
   justify-self: end;
@@ -89,8 +92,9 @@ export default {
   cursor: pointer;
 }
 .amount-column-header {
+  background-color: #eaeaea;
+  padding: 0.8em 2em;
   text-align: right;
-  padding: 0 2em;
 }
 .amount-column {
   justify-self: end;

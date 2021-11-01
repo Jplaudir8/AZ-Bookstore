@@ -12,20 +12,25 @@
           <button class="tertiary-button" @click="clearCart()">
             Clear Cart
           </button>
-          <p>Subtotal: {{ this.getSubtotal() | asDollarsAndCents }}</p>
+          <p class="bigger-subtitle">
+            <span class="subtitle">Subtotal: </span
+            >{{ this.getSubtotal() | asDollarsAndCents }}
+          </p>
         </div>
       </div>
       <div class="layout-2">
         <h2 class="cart-right-title">Summary</h2>
         <div class="summary-card">
-          <p>
-            <span class="subtitle">Items in total:</span>
-            {{ $store.state.cart.numberOfItems }}
-          </p>
-          <p>
-            <span class="subtitle">Subtotal:</span>
-            {{ this.getSubtotal() | asDollarsAndCents }}
-          </p>
+          <div class="details-subtitles">
+            <p>
+              <span class="subtitle">Items in total:</span>
+              {{ $store.state.cart.numberOfItems }}
+            </p>
+            <p>
+              <span class="subtitle">Subtotal:</span>
+              {{ this.getSubtotal() | asDollarsAndCents }}
+            </p>
+          </div>
           <button class="cta-button-cart">
             <router-link :to="'/checkout'">Checkout</router-link>
           </button>
@@ -106,6 +111,9 @@ export default {
   justify-content: space-between;
   margin: 3em 11em;
 }
+.outer-layout h2 {
+  font-size: 1.2em;
+}
 .layout-1 {
   padding: 0.5em;
   width: 75%;
@@ -117,6 +125,9 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.clear-cart-subtotal p {
+  padding: 1em 2em;
 }
 .layout-2 {
   padding: 0.5em;
@@ -131,11 +142,31 @@ export default {
   text-align: left;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   padding: 1em;
+  margin: 2em 0;
 }
-.summary-card .subtitle {
+.details-subtitles {
+  margin: 0.5em 0;
+}
+.details-subtitles p {
+  display: flex;
+  justify-content: space-between;
+}
+.subtitle {
   font-weight: 500;
+}
+.bigger-subtitle {
+  font-size: 1.1em;
 }
 .summary-card p {
   margin: 0.4em 0;
+}
+
+@media (max-width: 1330px) {
+  .outer-layout {
+    flex-direction: column;
+  }
+  .layout-1 {
+    width: 100%;
+  }
 }
 </style>
