@@ -14,12 +14,12 @@
       <p :key="item.book.bookId">{{ item.book.title }}</p>
       <p :key="item.book.bookId">{{ item.book.price | asDollarsAndCents }}</p>
       <div :key="item.book.bookId" class="quantity-column">
-        <button @click="updateCart(item.book, item.quantity + 1)">
-          <i class="fas fa-plus-circle"></i>
-        </button>
-        <span>{{ item.quantity }}</span>
         <button @click="updateCart(item.book, item.quantity - 1)">
           <i class="fas fa-minus-circle"></i>
+        </button>
+        <span>{{ item.quantity }}</span>
+        <button @click="updateCart(item.book, item.quantity + 1)">
+          <i class="fas fa-plus-circle"></i>
         </button>
       </div>
       <p :key="item.book.bookId">

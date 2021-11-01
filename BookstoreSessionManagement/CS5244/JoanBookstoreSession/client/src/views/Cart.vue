@@ -9,7 +9,9 @@
         <h2 class="cart-left-title">Your cart for Today:</h2>
         <cart-table></cart-table>
         <div class="clear-cart-subtotal">
-          <button class="tertiary-button">Clear Cart</button>
+          <button class="tertiary-button" @click="clearCart()">
+            Clear Cart
+          </button>
           <p>Subtotal: {{ this.getSubtotal() | asDollarsAndCents }}</p>
         </div>
       </div>
@@ -18,8 +20,14 @@
         <div class="summary-card">
           <p>Items in total: {{ $store.state.cart.numberOfItems }}</p>
           <p>Subtotal: {{ this.getSubtotal() | asDollarsAndCents }}</p>
-          <button class="cta-button-cart">Checkout</button>
-          <button class="secondary-button-cart">Continue Shopping</button>
+          <button class="cta-button-cart">
+            <router-link :to="'/checkout'">Checkout</router-link>
+          </button>
+          <button class="secondary-button-cart">
+            <router-link :to="'/category/' + $store.state.selectedCategoryName"
+              >Continue Shopping</router-link
+            >
+          </button>
         </div>
       </div>
     </section>
@@ -40,6 +48,9 @@ export default {
         0
       );
       return subtotal;
+    },
+    clearCart() {
+      this.$store.state.cart.clear();
     },
   },
 };
