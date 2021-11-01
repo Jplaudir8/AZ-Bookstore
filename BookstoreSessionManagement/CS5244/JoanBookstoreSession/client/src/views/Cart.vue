@@ -18,8 +18,14 @@
       <div class="layout-2">
         <h2 class="cart-right-title">Summary</h2>
         <div class="summary-card">
-          <p>Items in total: {{ $store.state.cart.numberOfItems }}</p>
-          <p>Subtotal: {{ this.getSubtotal() | asDollarsAndCents }}</p>
+          <p>
+            <span class="subtitle">Items in total:</span>
+            {{ $store.state.cart.numberOfItems }}
+          </p>
+          <p>
+            <span class="subtitle">Subtotal:</span>
+            {{ this.getSubtotal() | asDollarsAndCents }}
+          </p>
           <button class="cta-button-cart">
             <router-link :to="'/checkout'">Checkout</router-link>
           </button>
@@ -102,6 +108,7 @@ export default {
 }
 .layout-1 {
   padding: 0.5em;
+  width: 75%;
 }
 .cart-left-title {
   margin: 0.8em 0;
@@ -122,6 +129,11 @@ export default {
   flex-direction: column;
   width: 12em;
   text-align: left;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+}
+.summary-card .subtitle {
+  font-weight: 500;
 }
 .summary-card p {
   margin: 0.4em 0;
