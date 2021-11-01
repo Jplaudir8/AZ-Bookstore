@@ -27,6 +27,9 @@ export default new Vuex.Store({
     SET_SELECTED_CATEGORY_BOOKS(state, newSelectedCategoryBooks) {
       state.selectedCategoryBooks = newSelectedCategoryBooks;
     },
+    UPDATE_CART(state, { book, quantity }) {
+      state.cart.update(book, quantity);
+    },
     SET_SUGGESTED_CATEGORIES_A(state, suggestedCategoryBooksA) {
       state.suggestedCategoryBooksA = suggestedCategoryBooksA;
     },
@@ -50,6 +53,9 @@ export default new Vuex.Store({
     },
     selectCategory(context, categoryName) {
       context.commit("SELECT_CATEGORY", categoryName);
+    },
+    updateCart(context, { book, quantity }) {
+      context.commit("UPDATE_CART", { book, quantity });
     },
     fetchSelectedCategoryBooks(context) {
       ApiService.fetchSelectedCategoryBooks(this.state.selectedCategoryName)

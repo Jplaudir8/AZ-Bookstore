@@ -4,12 +4,23 @@
       <h1>Your cart is empty... What about we grab some books?</h1>
       <img src="@/assets/images/empty-cart-image.png" />
     </section>
-    <section v-else>
-      <div>
-        <h2>Your cart for Today:</h2>
+    <section v-else class="outer-layout">
+      <div class="layout-1">
+        <h2 class="cart-left-title">Your cart for Today:</h2>
         <cart-table></cart-table>
-        <h3>Summary</h3>
-        <p>Summary div card goes here</p>
+        <div class="clear-cart-subtotal">
+          <button class="tertiary-button">Clear Cart</button>
+          <p>Subtotal: {{ this.getSubtotal() | asDollarsAndCents }}</p>
+        </div>
+      </div>
+      <div class="layout-2">
+        <h2 class="cart-right-title">Summary</h2>
+        <div class="summary-card">
+          <p>Items in total: {{ $store.state.cart.numberOfItems }}</p>
+          <p>Subtotal: {{ this.getSubtotal() | asDollarsAndCents }}</p>
+          <button class="cta-button-cart">Checkout</button>
+          <button class="secondary-button-cart">Continue Shopping</button>
+        </div>
       </div>
     </section>
   </div>
@@ -20,21 +31,51 @@ import CartTable from "@/components/CartTable";
 export default {
   name: "Cart",
   components: { CartTable },
+  methods: {
+    getSubtotal: function () {
+      const subtotal = this.$store.state.cart.items.reduce(
+        (accumulator, item) => {
+          return accumulator + item.book.price * item.quantity;
+        },
+        0
+      );
+      return subtotal;
+    },
+  },
 };
 </script>
 
 <style>
+.cta-button-cart {
+  margin: 0.8em 0;
+  padding: 0.8em 1.3em;
+  background-color: var(--cta-color);
+  border: 0;
+  border-radius: 0.2em;
+  cursor: pointer;
+}
+.secondary-button-cart {
+  padding: 0.8em;
+  background-color: var(--secondary-background-color);
+  border: 0;
+  border-radius: 0.3em;
+  cursor: pointer;
+}
+.cta-button-cart:hover {
+  background-color: var(--cta-color-on-hover);
+}
+.secondary-button-cart:hover {
+  background-color: var(--secondary-background-color-on-hover);
+}
 .cart-page {
   flex-grow: 1;
   overflow: auto;
 }
-
 .empty-cart {
   text-align: center;
   font-size: 1.6em;
   margin: 5em 0 3em;
 }
-
 .empty-cart h1 {
   line-height: 1.5em;
 }
@@ -42,5 +83,36 @@ export default {
 .empty-cart img {
   width: 350px;
   margin: 4em 0;
+}
+.outer-layout {
+  display: flex;
+  justify-content: space-between;
+  margin: 3em 11em;
+}
+.layout-1 {
+  padding: 0.5em;
+}
+.cart-left-title {
+  margin: 0.8em 0;
+}
+.clear-cart-subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.layout-2 {
+  padding: 0.5em;
+}
+.cart-right-title {
+  margin: 0.8em 0;
+}
+.summary-card {
+  display: flex;
+  flex-direction: column;
+  width: 12em;
+  text-align: left;
+}
+.summary-card p {
+  margin: 0.4em 0;
 }
 </style>

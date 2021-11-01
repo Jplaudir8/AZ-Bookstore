@@ -16,7 +16,7 @@
         <p class="book-author">
           by<span> {{ book.author }}</span>
         </p>
-        <p class="book-price">&dollar; {{ (book.price / 100).toFixed(2) }}</p>
+        <p class="book-price">{{ book.price | asDollarsAndCents }}</p>
       </div>
       <div>
         <button class="icon-w-text-btn">
