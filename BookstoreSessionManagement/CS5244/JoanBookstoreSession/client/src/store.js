@@ -4,7 +4,7 @@ import ApiService from "@/services/ApiService";
 import { ShoppingCart } from "@/models/ShoppingCart";
 
 Vue.use(Vuex);
-
+export const CART_STORAGE_KEY = "cart";
 export default new Vuex.Store({
   state: {
     categories: [],
@@ -20,6 +20,7 @@ export default new Vuex.Store({
     },
     ADD_TO_CART(state, book) {
       state.cart.addItem(book, 1);
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(this.state.cart));
     },
     SELECT_CATEGORY(state, newSelectedCategoryName) {
       state.selectedCategoryName = newSelectedCategoryName;
@@ -29,6 +30,19 @@ export default new Vuex.Store({
     },
     UPDATE_CART(state, { book, quantity }) {
       state.cart.update(book, quantity);
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(this.state.cart));
+    },
+    SET_CART(state, shoppingCart) {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(shoppingCart));
+      let newCart = new ShoppingCart();
+      shoppingCart.items.forEach((item) => {
+        newCart.addItem(item.book, item.quantity);
+      });
+      state.cart = newCart;
+    },
+    CLEAR_CART() {
+      this.state.cart.clear();
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(this.state.cart));
     },
     SET_SUGGESTED_CATEGORIES_A(state, suggestedCategoryBooksA) {
       state.suggestedCategoryBooksA = suggestedCategoryBooksA;
@@ -56,6 +70,9 @@ export default new Vuex.Store({
     },
     updateCart(context, { book, quantity }) {
       context.commit("UPDATE_CART", { book, quantity });
+    },
+    clearCart(context) {
+      context.commit("CLEAR_CART");
     },
     fetchSelectedCategoryBooks(context) {
       ApiService.fetchSelectedCategoryBooks(this.state.selectedCategoryName)

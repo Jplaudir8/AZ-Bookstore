@@ -50,7 +50,7 @@ export default {
       return subtotal;
     },
     clearCart() {
-      this.$store.state.cart.clear();
+      this.$store.dispatch("clearCart");
     },
   },
 };
