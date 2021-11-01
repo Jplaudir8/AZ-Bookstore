@@ -3,6 +3,11 @@
     <section v-if="$store.state.cart.numberOfItems === 0" class="empty-cart">
       <h1>Your cart is empty... What about we grab some books?</h1>
       <img src="@/assets/images/empty-cart-image.png" />
+      <button class="cta-button cta-small-empty">
+        <router-link :to="'/category/' + $store.state.selectedCategoryName"
+          >Explore the Shelf</router-link
+        >
+      </button>
     </section>
     <section v-else class="outer-layout">
       <div class="layout-1">
@@ -86,6 +91,10 @@ export default {
 .cta-button-cart:hover {
   background-color: var(--cta-color-on-hover);
 }
+.cta-small-empty {
+  font-size: 0.7em;
+}
+
 .secondary-button-cart:hover {
   background-color: var(--secondary-background-color-on-hover);
 }
@@ -94,6 +103,9 @@ export default {
   overflow: auto;
 }
 .empty-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   font-size: 1.6em;
   margin: 5em 0 3em;
@@ -104,7 +116,7 @@ export default {
 
 .empty-cart img {
   width: 350px;
-  margin: 4em 0;
+  margin: 4em 0 2.5em;
 }
 .outer-layout {
   display: flex;

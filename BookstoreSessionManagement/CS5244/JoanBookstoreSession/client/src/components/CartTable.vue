@@ -12,7 +12,7 @@
         :alt="item.book.title"
         class="book-image"
       />
-      <p :key="item.book.bookId">{{ item.book.title }}</p>
+      <p :key="item.book.bookId" class="title-column">{{ item.book.title }}</p>
       <p :key="item.book.bookId" class="unit-price-column">
         {{ item.book.price | asDollarsAndCents }}
       </p>
@@ -72,6 +72,10 @@ export default {
   min-width: 70px;
   max-width: 100px;
   margin: 0 auto;
+  padding: 0.3em 0.5em;
+}
+.title-column {
+  padding: 0.3em 0.5em;
 }
 .unit-price-column-header {
   background-color: #eaeaea;
@@ -84,6 +88,7 @@ export default {
 }
 .quantity-column {
   justify-self: center;
+  padding: 1em 2em;
 }
 .quantity-column button {
   border: none;
@@ -101,7 +106,7 @@ export default {
   padding: 1em 2em;
 }
 .quantity-column button:hover {
-  color: #596171;
+  color: var(--tertiary-background-color-on-hover);
 }
 .quantity-column span {
   padding: 0 0.3em;

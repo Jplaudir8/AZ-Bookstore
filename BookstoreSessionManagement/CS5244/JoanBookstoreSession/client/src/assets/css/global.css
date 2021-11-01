@@ -33,6 +33,7 @@
     --secondary-background-color: #D6E4F5;
     --secondary-background-color-on-hover: #cfdaf5;
     --tertiary-background-color: #2D3442;
+    --tertiary-background-color-on-hover: #4f5565;
     --cta-color: #FF9900;
     --cta-color-on-hover: #ffa217;
     --drop-shadow-1: #727272;
@@ -117,6 +118,10 @@ body {
     cursor: pointer;
     font-size: .9em;
     align-self: center;
+}
+
+.tertiary-button:hover {
+    background-color: var(--tertiary-background-color-on-hover);
 }
 
 .icon-w-text-btn {
