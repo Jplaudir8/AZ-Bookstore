@@ -145,16 +145,15 @@
           :disabled="checkoutStatus == 'PENDING'"
           value="Complete Purchase"
         />
-        <!-- TODO (style): The submit button should not take up the entire width of the form. -->
-        <!-- TODO (style): The submit button should be styled consistent with your own site. -->
       </form>
 
-      <!-- TODO: Display the cart total, subtotal and surcharge. -->
-
       <div class="total-info-section">
+        <div class="shipping-subtotal">
+          <p>( Subtotal: <span class="less-bold">{{ cart.subtotal | asDollarsAndCents }}</span></p>
+          <span> + </span>
+          <p>Shipping: <span class="less-bold">{{ cart.surcharge | asDollarsAndCents }}</span>)</p>
+        </div>
         <p>Your credit card will be charged <span class="less-bold">{{ (cart.subtotal + cart.surcharge) | asDollarsAndCents }}</span></p>
-        <p>Subtotal: <span class="less-bold">{{ cart.subtotal | asDollarsAndCents }}</span> </p>
-        <p>Shipping: <span class="less-bold">{{ cart.surcharge | asDollarsAndCents }}</span></p>
       </div>
       <section v-show="checkoutStatus != ''" class="checkoutStatusBox">
         <div v-if="checkoutStatus == 'ERROR'">
@@ -259,6 +258,17 @@ export default {
   methods: {
     submitOrder() {
       console.log("Submit order");
+      this.$v.$touch(); // Ensures validators always run
+      if (this.$v.$invalid) {
+        this.checkoutStatus = "ERROR";
+      } else {
+        this.checkoutStatus = "PENDING";
+        setTimeout(() => {
+          this.checkoutStatus = "OK";
+          setTimeout(() => {this.$router.push({ name: 'confirmation' })}, 1000);
+
+        }, 1000);
+      }
     },
 
     /* NOTE: For example yearFrom(0) == 2021 */
@@ -273,7 +283,7 @@ export default {
 
 h1 {
   font-size: 1.3em;
-  margin: .4em .2em 1.2em 4em;
+  margin: .8em .2em 1.2em 4em;
 }
 
 .less-bold {
@@ -299,7 +309,17 @@ h1 {
 }
 
 .total-info-section p {
-  margin: 1em .2em;
+  margin: .7em .2em;
+}
+
+.shipping-subtotal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shipping-subtotal span {
+  padding: .1em .2em .1em .1em;
 }
 
 .name-section {
@@ -319,7 +339,6 @@ h1 {
 }
 
 .checkout-page {
-
   flex-grow: 1;
   overflow: auto;
 }
@@ -328,7 +347,7 @@ h1 {
   flex-direction: column;
   padding: 1em;
   align-items: center;
-  margin: 3em .2em 1em;
+  margin: 1.2em .2em 1em;
 }
 
 form {
@@ -359,6 +378,10 @@ form > div > div > select {
   min-width: 132px;
 }
 
+form > div > div label {
+  margin-right: .8em;
+}
+
 form > div > .error {
   color: red;
   font-style: italic;
@@ -382,9 +405,18 @@ form > .button:hover {
   background-color: var(--cta-color-on-hover);
 }
 
+form > .button:disabled,
+form > .button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
 .checkoutStatusBox {
-  margin: 1em;
+  margin: 1em 1em 1em 4.5em;
   padding: 1em;
   text-align: center;
+  color: red;
+  font-style: italic;
 }
 </style>
