@@ -1,6 +1,9 @@
 <template>
   <div class="checkout-page">
     <section class="checkout-page-body" v-if="!cart.empty">
+
+      <h1>Checkout</h1>
+
       <form @submit.prevent="submitOrder">
 
         <div class="name-section">
@@ -146,26 +149,13 @@
         <!-- TODO (style): The submit button should be styled consistent with your own site. -->
       </form>
 
-
-      <!-- TODO (style): Fix error message placement so they nearer to the correct fields. -->
-      <!-- TODO (style): HINT: Use another <div> and label, input, and error, and use flexbox to style. -->
-
-      <div
-        style="
-          border: 1px solid black;
-          padding: 1em;
-          margin-left: 1em;
-          text-align: left;
-        "
-      >
-        <tree-view
-          :data="$v"
-          :options="{ rootObjectKey: '$v', maxDepth: 1 }"
-        ></tree-view>
-      </div>
-
       <!-- TODO: Display the cart total, subtotal and surcharge. -->
-      Your credit card will be charged {{ (cart.subtotal + cart.surcharge) | asDollarsAndCents }}
+
+      <div class="total-info-section">
+        <p>Your credit card will be charged <span class="less-bold">{{ (cart.subtotal + cart.surcharge) | asDollarsAndCents }}</span></p>
+        <p>Subtotal: <span class="less-bold">{{ cart.subtotal | asDollarsAndCents }}</span> </p>
+        <p>Shipping: <span class="less-bold">{{ cart.surcharge | asDollarsAndCents }}</span></p>
+      </div>
       <section v-show="checkoutStatus != ''" class="checkoutStatusBox">
         <div v-if="checkoutStatus == 'ERROR'">
           Error: Please fix the problems above and try again.
@@ -281,6 +271,15 @@ export default {
 
 <style scoped>
 
+h1 {
+  font-size: 1.3em;
+  margin: .4em .2em 1.2em 4em;
+}
+
+.less-bold {
+  font-weight: 500;
+}
+
 .exp-date-section {
   display: flex;
   align-items: center;
@@ -288,6 +287,19 @@ export default {
 
 .exp-date-section .exp-date-separator {
   margin: .2em .4em .2em .6em;
+}
+
+.exp-date-section select {
+  height: 2.1em;
+}
+
+.total-info-section {
+  margin-left: 4em;
+  text-align: center;
+}
+
+.total-info-section p {
+  margin: 1em .2em;
 }
 
 .name-section {
@@ -316,6 +328,7 @@ export default {
   flex-direction: column;
   padding: 1em;
   align-items: center;
+  margin: 3em .2em 1em;
 }
 
 form {
@@ -338,7 +351,6 @@ form > div > div {
 form > div > div > input,
 form > div > div > select {
   background-color: #f3f3f3;
-
   margin: .5em 0 .5em .5em;
   padding: 2px 10px;
   border: 1px solid #8a8b8d;
@@ -349,6 +361,25 @@ form > div > div > select {
 
 form > div > .error {
   color: red;
+  font-style: italic;
+  font-size: .86em;
+  letter-spacing: .04em;
+}
+
+form > .button {
+  align-self: center;
+  min-width: 220px;
+  height: 2.3em;
+  margin: 1em 0 1.5em 5em;
+  background-color: var(--cta-color);
+  border: 0;
+  border-radius: .3em;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+form > .button:hover {
+  background-color: var(--cta-color-on-hover);
 }
 
 .checkoutStatusBox {
