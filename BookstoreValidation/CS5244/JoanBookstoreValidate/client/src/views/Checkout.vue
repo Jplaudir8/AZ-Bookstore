@@ -49,7 +49,7 @@
               <em>Address must have at least
                 {{ $v.name.$params.minLength.min }} letters.</em>
             </span>
-            <span class="error" v-else-if="!$v.name.maxLength">
+            <span class="error" v-else-if="!$v.address.maxLength">
               <em>Address can have at most
                 {{ $v.name.$params.maxLength.max }} letters.</em>
             </span>
@@ -147,14 +147,6 @@
         />
       </form>
 
-      <div class="total-info-section">
-        <div class="shipping-subtotal">
-          <p>( Subtotal: <span class="less-bold">{{ cart.subtotal | asDollarsAndCents }}</span></p>
-          <span> + </span>
-          <p>Shipping: <span class="less-bold">{{ cart.surcharge | asDollarsAndCents }}</span>)</p>
-        </div>
-        <p>Your credit card will be charged <span class="less-bold">{{ (cart.subtotal + cart.surcharge) | asDollarsAndCents }}</span></p>
-      </div>
       <section v-show="checkoutStatus != ''" class="checkoutStatusBox">
         <div v-if="checkoutStatus == 'ERROR'">
           Error: Please fix the problems above and try again.
@@ -169,6 +161,15 @@
           An unexpected error occurred, please try again.
         </div>
       </section>
+      <div class="total-info-section">
+        <div class="shipping-subtotal">
+          <p>( Subtotal: <span class="less-bold">{{ cart.subtotal | asDollarsAndCents }}</span></p>
+          <span> + </span>
+          <p>Shipping: <span class="less-bold">{{ cart.surcharge | asDollarsAndCents }}</span>)</p>
+        </div>
+        <p>Your credit card will be charged <span class="less-bold">{{ (cart.subtotal + cart.surcharge) | asDollarsAndCents }}</span></p>
+      </div>
+
     </section>
 
     <section v-else class="empty-cart-checkout-page">
@@ -312,6 +313,10 @@ h1 {
   margin: .7em .2em;
 }
 
+.total-info-section > p {
+  font-size: 1.18em;
+}
+
 .shipping-subtotal {
   display: flex;
   justify-content: center;
@@ -393,7 +398,7 @@ form > .button {
   align-self: center;
   min-width: 220px;
   height: 2.3em;
-  margin: 1em 0 1.5em 5em;
+  margin: 1em 0 1em 5em;
   background-color: var(--cta-color);
   border: 0;
   border-radius: .3em;
@@ -413,7 +418,7 @@ form > .button[disabled]{
 }
 
 .checkoutStatusBox {
-  margin: 1em 1em 1em 4.5em;
+  margin: .2em 1em .7em 4.5em;
   padding: 1em;
   text-align: center;
   color: red;
