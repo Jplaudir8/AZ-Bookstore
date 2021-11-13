@@ -74,6 +74,14 @@ export default new Vuex.Store({
     clearCart(context) {
       context.commit("CLEAR_CART");
     },
+    placeOrder({ commit, state }, customerForm) {
+      return ApiService.placeOrder({
+        cart: state.cart,
+        customerForm: customerForm
+      }).then(() => {
+        commit('CLEAR_CART')
+      })
+    },
     fetchSelectedCategoryBooks(context) {
       ApiService.fetchSelectedCategoryBooks(this.state.selectedCategoryName)
         .then((selectedBooks) => {

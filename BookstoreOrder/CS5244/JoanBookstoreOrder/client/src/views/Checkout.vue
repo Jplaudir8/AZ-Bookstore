@@ -265,9 +265,24 @@ export default {
       } else {
         this.checkoutStatus = "PENDING";
         setTimeout(() => {
-          this.checkoutStatus = "OK";
-          setTimeout(() => {this.$router.push({ name: 'confirmation' })}, 1000);
-
+          this.$store
+              .dispatch('placeOrder', {
+                name: this.name,
+                address: this.address,
+                phone: this.phone,
+                email: this.email,
+                ccNumber: this.ccNumber,
+                ccExpiryMonth: this.ccExpiryMonth,
+                ccExpiryYear: this.ccExpiryYear
+              })
+              .then(() => {
+                this.checkoutStatus = 'OK'
+                this.$router.push({ name: 'confirmation' })
+              })
+              .catch(reason => {
+                this.checkoutStatus = 'SERVER_ERROR'
+                console.log('Error placing order', reason)
+              });
         }, 1000);
       }
     },
