@@ -137,13 +137,13 @@ public class DefaultOrderService implements OrderService {
 				throw new ApiException.InvalidParameter("Invalid quantity");
 			}
 			Book databaseBook = bookDao.findByBookId(item.getBookId());
-			// TODO: complete the required validations
+
 			if (databaseBook.getPrice() != item.getBookForm().getPrice()) {
 				throw new ApiException.InvalidParameter("Cart's item price does not match price in database");
 			}
 
 			if (databaseBook.getCategoryId() != item.getBookForm().getCategoryId()) {
-				throw new ApiException.InvalidParameter("Cart's category price does not match category in database");
+				throw new ApiException.InvalidParameter("Cart's item category does not match category in database");
 			}
 		});
 	}
