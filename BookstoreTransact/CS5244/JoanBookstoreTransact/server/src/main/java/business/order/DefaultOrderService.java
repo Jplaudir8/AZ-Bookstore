@@ -9,28 +9,37 @@ import business.cart.ShoppingCart;
 import business.cart.ShoppingCartItem;
 import business.customer.Customer;
 import business.customer.CustomerDao;
+import business.customer.CustomerDaoJdbc;
 import business.customer.CustomerForm;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.time.DateTimeException;
-import java.time.LocalDate;
 import java.time.YearMonth;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class DefaultOrderService implements OrderService {
 
 	private BookDao bookDao;
+
 	private CustomerDao customerDao;
 	private OrderDao orderDao;
 	private LineItemDao lineItemDao;
 
 	public void setBookDao(BookDao bookDao) {
 		this.bookDao = bookDao;
+	}
+
+	public void setCustomerDao(CustomerDao customerDao) {
+		this.customerDao = customerDao;
+	}
+
+	public void setOrderDao(OrderDao orderDao) {
+		this.orderDao = orderDao;
+	}
+
+	public void setLineItemDao(LineItemDao lineItemDao) {
+		this.lineItemDao = lineItemDao;
 	}
 
 	@Override
@@ -68,9 +77,10 @@ public class DefaultOrderService implements OrderService {
 	}
 
 	private Date getDate(String monthString, String yearString) {
-		Date date = new GregorianCalendar(Integer.parseInt(yearString), Integer.parseInt(monthString), 1).getTime();
-		return date;
-		//TODO implement this correctly
+//		int lastDayOfMonth = YearMonth.of(Integer.parseInt(yearString), Integer.parseInt(monthString)).lengthOfMonth();
+//		Date date = new GregorianCalendar(Integer.parseInt(yearString), Integer.parseInt(monthString), lastDayOfMonth).getTime();
+		return new Date();
+		//TODO need to double check its working as expected
 	}
 
 	private long performPlaceOrderTransaction(
@@ -102,7 +112,6 @@ public class DefaultOrderService implements OrderService {
 		}
 	}
 
-	// TODO: return random integer between 0 and 999999999
 	private int generateConfirmationNumber() {
 		Random random = new Random();
 		return random.nextInt(999999999);

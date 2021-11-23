@@ -45,7 +45,7 @@ public class CustomerDaoJdbc implements CustomerDao {
             statement.setString(3, phone);
             statement.setString(4, email);
             statement.setString(5, ccNumber);
-            statement.setDate(6, (java.sql.Date) ccExpDate);
+            statement.setDate(6, new java.sql.Date(ccExpDate.getTime()));
             int affected = statement.executeUpdate();
             if (affected != 1) {
                 throw new BookstoreUpdateDbException("Failed to insert a customer, affected row count = " + affected);
