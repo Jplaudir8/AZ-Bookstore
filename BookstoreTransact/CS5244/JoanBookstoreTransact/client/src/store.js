@@ -13,6 +13,7 @@ export default new Vuex.Store({
     cart: new ShoppingCart(),
     suggestedCategoryBooksA: [],
     suggestedCategoryBooksB: [],
+    orderDetails: null
   },
   mutations: {
     SET_CATEGORIES(state, newCategories) {
@@ -50,6 +51,12 @@ export default new Vuex.Store({
     SET_SUGGESTED_CATEGORIES_B(state, suggestedCategoryBooksB) {
       state.suggestedCategoryBooksB = suggestedCategoryBooksB;
     },
+    CLEAR_ORDER_DETAILS() {
+      this.state.orderDetails = null;
+    },
+    SET_ORDER_DETAILS(state, orderDetails) {
+      state.orderDetails = orderDetails;
+    }
   },
   actions: {
     fetchCategories(context) {
@@ -75,11 +82,15 @@ export default new Vuex.Store({
       context.commit("CLEAR_CART");
     },
     placeOrder({ commit, state }, customerForm) {
+      commit('CLEAR_ORDER_DETAILS')
+
       return ApiService.placeOrder({
         cart: state.cart,
         customerForm: customerForm
-      }).then(() => {
+      }).then( orderDetails => {
+        console.log(orderDetails);
         commit('CLEAR_CART')
+        commit('SET_ORDER_DETAILS', orderDetails);
       })
     },
     fetchSelectedCategoryBooks(context) {
