@@ -77,9 +77,9 @@ public class DefaultOrderService implements OrderService {
 	}
 
 	private Date getDate(String monthString, String yearString) {
-//		int lastDayOfMonth = YearMonth.of(Integer.parseInt(yearString), Integer.parseInt(monthString)).lengthOfMonth();
-//		Date date = new GregorianCalendar(Integer.parseInt(yearString), Integer.parseInt(monthString), lastDayOfMonth).getTime();
-		return new Date();
+		int lastDayOfMonth = YearMonth.of(Integer.parseInt(yearString), Integer.parseInt(monthString)).lengthOfMonth();
+		Date date = new GregorianCalendar(Integer.parseInt(yearString) + 1, Integer.parseInt(monthString) - 1, lastDayOfMonth).getTime();
+		return date;
 		//TODO need to double check its working as expected
 	}
 
