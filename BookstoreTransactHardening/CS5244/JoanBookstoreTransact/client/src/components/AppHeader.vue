@@ -24,7 +24,7 @@
 
       <button class="user-btn">JP</button>
 
-      <router-link :to="'/cart'" class="nav-link selected">
+      <router-link :to="'/cart'" class="cart-btn-router">
         <button class="cart-btn">
           <i class="fas fa-shopping-cart"></i>
           <span class="counter-badge">{{
@@ -59,7 +59,7 @@ header {
   color: white;
   font-family: var(--title-font-family);
   font-weight: normal;
-  font-size: 1.5em; /* 24px */
+  font-size: 1.5em;
   margin: 0.3em 0 0 0;
 }
 
@@ -108,8 +108,6 @@ header {
   border: none;
 }
 
-/* Categories Button */
-
 .categories-btn {
   position: relative;
   padding: 0 0 0.2em 0;
@@ -120,8 +118,6 @@ header {
   padding: 0.4em 0.1em;
 }
 
-/* Searchbox */
-
 .searchBox-user-cart {
   display: flex;
   align-items: center;
@@ -130,15 +126,9 @@ header {
   width: 60%;
 }
 
-/* User and Cart Buttons */
 .searchBox-user-cart .user-btn {
   margin-left: 1em;
   padding: 0.4em;
-}
-
-.searchBox-user-cart .cart-btn {
-  margin-left: 0.7em;
-  padding: 0.2em;
 }
 
 .searchBox-user-cart .user-btn {
@@ -152,9 +142,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* width: 30px;
-  height: 30px; */
   font-size: 1.4em;
+  padding: 0.2em;
 }
 
 .searchBox-user-cart .cart-btn .counter-badge {
@@ -186,7 +175,6 @@ header {
   background-color: white;
 }
 
-/* reminder: this action only worked because what we are hovering on(.categories-btn-and-list) is the parent of .categories-list */
 .logo-and-categories .categories-btn-and-list:hover .categories-list {
   visibility: visible;
 }
@@ -198,8 +186,12 @@ header {
 }
 
 ul.categories-list li:not(.selected):hover {
-  /* background-color: #eaeaea; */
   background-color: var(--secondary-background-color);
+}
+
+.cart-btn-router {
+  margin-left: 1.1em;
+  padding: 0.2em;
 }
 
 @media (max-width: 880px) {
@@ -223,6 +215,11 @@ ul.categories-list li:not(.selected):hover {
 
   .searchBox-user-cart .cart-btn {
     margin: 0.4em 0 0.8em;
+  }
+
+  .cart-btn-router {
+    margin-left: 0;
+    padding-left: 0;
   }
 }
 </style>

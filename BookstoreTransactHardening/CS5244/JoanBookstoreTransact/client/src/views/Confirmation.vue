@@ -1,7 +1,10 @@
 <template>
   <div id="confirmationView">
     <section v-if="!$store.state.orderDetails" id="confirmation-invalid">
-      <h1>Nothing was ordered</h1>
+      <h1>No order has been placed yet...</h1>
+      <button class="cta-button cta-small-empty">
+        <router-link to="../category/Business">Continue Shopping</router-link>
+      </button>
     </section>
     <div id="card" v-else>
       <img
@@ -204,7 +207,17 @@ h3 {
   font-weight: 500;
 }
 
+#confirmation-invalid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.6em;
+}
+
 #confirmation-invalid h1 {
-  font-size: 1.3em;
+  margin: 1em;
+  line-height: 1.5em;
+  margin: 6em 0.4em 3em;
+  font-size: 1em;
 }
 </style>

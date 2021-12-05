@@ -1,32 +1,26 @@
 <template>
-<!--  <table>-->
-<!--    <tr-->
-<!--      v-for="(item, index) in this.$store.state.orderDetails.lineItems"-->
-<!--      :key="item.productId"-->
-<!--    >-->
-<!--      <td>-->
-<!--        {{ $store.state.orderDetails.books[index].title }}-->
-<!--      </td>-->
-<!--      <td>x {{ item.quantity }}</td>-->
-<!--      <td>{{ (item.quantity * $store.state.orderDetails.books[index].price) | asDollarsAndCents }}</td>-->
-<!--    </tr>-->
-<!--  </table>-->
-
   <div class="cart-table">
     <p class="table-head">Book</p>
     <p class="table-head">Quantity</p>
     <p class="table-head">Price</p>
     <template v-for="(item, index) in $store.state.orderDetails.lineItems">
-      <p class="title-column" :key="index">{{ $store.state.orderDetails.books[index].title }}</p>
+      <p class="title-column" :key="index">
+        {{ $store.state.orderDetails.books[index].title }}
+      </p>
       <p class="quantity-column" :key="index">x {{ item.quantity }}</p>
-      <p class="price-column" :key="index">{{ (item.quantity * $store.state.orderDetails.books[index].price) | asDollarsAndCents }}</p>
+      <p class="price-column" :key="index">
+        {{
+          (item.quantity * $store.state.orderDetails.books[index].price)
+            | asDollarsAndCents
+        }}
+      </p>
     </template>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ConfirmationTable"
+  name: "ConfirmationTable",
 };
 </script>
 
@@ -58,5 +52,4 @@ export default {
   justify-self: end;
   padding: 1em 1.5em;
 }
-
 </style>

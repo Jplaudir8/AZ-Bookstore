@@ -50,7 +50,6 @@ export default {
 }
 
 @media (max-width: 880px) and (min-width: 400px) {
-  /* For devices smaller than 480px */
   .home-page-content h1 {
     font-size: 1.5em;
   }
@@ -65,7 +64,6 @@ export default {
 }
 
 @media (max-width: 980px) and (min-width: 880px) {
-  /* For devices smaller than 880px */
   .home-page-content h1 {
     font-size: 1.7em;
   }

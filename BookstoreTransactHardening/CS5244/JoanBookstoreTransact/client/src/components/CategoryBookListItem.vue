@@ -59,7 +59,6 @@ export default {
 .grid-books .grid-item {
   padding: 0.9em 0.8em 1.1em;
   max-width: 135px;
-  /* border: 1px solid black; */
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   transition: transform 400ms ease, box-shadow 500ms ease;
 }
