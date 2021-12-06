@@ -12,7 +12,9 @@
         </template>
       </div>
       <button class="secondary-button">
-        <router-link to="../category/Best Seller">Best Sellers</router-link>
+        <router-link :to="{ path: '../category/Best Seller' }"
+          >Best Sellers</router-link
+        >
       </button>
     </div>
 
@@ -28,19 +30,19 @@
         </template>
       </div>
       <button class="secondary-button">
-        <router-link to="../category/On Sale">On Sale</router-link>
+        <router-link :to="{ path: '../category/On Sale' }">On Sale</router-link>
       </button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "HomeCategoryList",
   created: function () {
-    this.$store.dispatch("fetchSuggestedBooks");
+    this.fetchSuggestedBooks();
   },
   methods: {
     bookImageFileName: function (book) {
@@ -51,6 +53,7 @@ export default {
       name = name.replace("#", "");
       return `${name}.png`;
     },
+    ...mapActions(["fetchSuggestedBooks"]),
   },
   computed: mapState(["suggestedCategoryBooksA", "suggestedCategoryBooksB"]),
 };

@@ -5,7 +5,9 @@
       <span>Your best bookstore of all times.</span>
     </h1>
     <button class="cta-button">
-      <router-link to="../category/Business">Explore the Shelf</router-link>
+      <router-link :to="{ path: '../category/Business' }"
+        >Explore the Shelf</router-link
+      >
     </button>
 
     <home-category-list></home-category-list>

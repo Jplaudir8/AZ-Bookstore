@@ -8,6 +8,7 @@
 <script>
 import CategoryNav from "@/components/CategoryNav";
 import CategoryBookList from "@/components/CategoryBookList";
+import { mapActions } from "vuex";
 
 export default {
   name: "category",
@@ -17,11 +18,12 @@ export default {
   },
   created: function () {
     const self = this;
-    this.$store.dispatch("selectCategory", this.$route.params.name);
-    this.$store.dispatch("fetchSelectedCategoryBooks").catch(function () {
+    this.selectCategory(this.$route.params.name);
+    this.fetchSelectedCategoryBooks().catch(function () {
       self.$router.push("/404");
     });
   },
+  methods: mapActions(["selectCategory", "fetchSelectedCategoryBooks"]),
 };
 </script>
 

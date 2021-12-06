@@ -3,7 +3,9 @@
     <section v-if="!orderDetails">
       <h1>No order has been placed yet...</h1>
       <button class="cta-button cta-small-empty">
-        <router-link to="../category/Business">Continue Shopping</router-link>
+        <router-link :to="{ path: '../category/Business' }"
+          >Continue Shopping</router-link
+        >
       </button>
     </section>
     <div id="card" v-else>
@@ -40,26 +42,24 @@
       <h3>What you ordered</h3>
       <confirmation-table> </confirmation-table>
 
-      <div id="total-section">
-        <div id="totals">
-          <div class="totals-child">
-            <p>Subtotal:</p>
-            <p>
-              {{
-                (orderDetails.order.amount - cart.surcharge) | asDollarsAndCents
-              }}
-            </p>
-          </div>
-          <div class="totals-child">
-            <p>Surcharge:</p>
-            <p>{{ cart.surcharge | asDollarsAndCents }}</p>
-          </div>
-          <div class="totals-child bold-font">
-            <p>Total:</p>
-            <p>
-              {{ orderDetails.order.amount | asDollarsAndCents }}
-            </p>
-          </div>
+      <div id="totals">
+        <div class="totals-child">
+          <p>Subtotal:</p>
+          <p>
+            {{
+              (orderDetails.order.amount - cart.surcharge) | asDollarsAndCents
+            }}
+          </p>
+        </div>
+        <div class="totals-child">
+          <p>Surcharge:</p>
+          <p>{{ cart.surcharge | asDollarsAndCents }}</p>
+        </div>
+        <div class="totals-child bold-font">
+          <p>Total:</p>
+          <p>
+            {{ orderDetails.order.amount | asDollarsAndCents }}
+          </p>
         </div>
       </div>
     </div>
@@ -111,15 +111,12 @@ h3 {
   width: 50px;
 }
 
-#total-section {
-  display: flex;
-  justify-content: end;
-  width: 100%;
-  margin-right: 3em;
-}
-
 #totals {
   display: flex;
+  justify-content: end;
+  width: 10em;
+  margin-right: 1.5em;
+  align-self: end;
   flex-direction: column;
   min-width: 140px;
 }

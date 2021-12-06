@@ -17,11 +17,11 @@
         {{ item.book.price | asDollarsAndCents }}
       </p>
       <div :key="item.book.bookId" class="quantity-column">
-        <button @click="updateCart(item.book, item.quantity - 1)">
+        <button @click="upgradeCart(item.book, item.quantity - 1)">
           <i class="fas fa-minus-circle"></i>
         </button>
         <span>{{ item.quantity }}</span>
-        <button @click="updateCart(item.book, item.quantity + 1)">
+        <button @click="upgradeCart(item.book, item.quantity + 1)">
           <i class="fas fa-plus-circle"></i>
         </button>
       </div>
@@ -33,13 +33,13 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "CartTable",
   methods: {
-    updateCart(book, quantity) {
-      this.$store.dispatch("updateCart", { book, quantity });
+    upgradeCart(book, quantity) {
+      this.updateCart({ book, quantity });
     },
     bookImageFileName: function (book) {
       let name = book.title.toLowerCase();
@@ -49,6 +49,7 @@ export default {
       name = name.replace("#", "");
       return `${name}.png`;
     },
+    ...mapActions(["updateCart"]),
   },
   computed: mapState(["cart"]),
 };

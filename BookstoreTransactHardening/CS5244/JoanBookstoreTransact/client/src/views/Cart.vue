@@ -4,7 +4,9 @@
       <h1>Your cart is empty... What about we grab some books?</h1>
       <img src="@/assets/images/empty-cart-image.png" />
       <button class="cta-button cta-small-empty">
-        <router-link to="../category/Business">Continue Shopping</router-link>
+        <router-link :to="{ path: '../category/Business' }"
+          >Continue Shopping</router-link
+        >
       </button>
     </section>
     <section v-else class="outer-layout">
@@ -12,7 +14,7 @@
         <h2 class="cart-left-title">Your cart for Today:</h2>
         <cart-table></cart-table>
         <div class="clear-cart-subtotal">
-          <button class="tertiary-button" @click="clearCart()">
+          <button class="tertiary-button" @click="emptyCart()">
             Clear Cart
           </button>
           <p class="bigger-subtitle">
@@ -38,7 +40,7 @@
             <router-link :to="'/checkout'">Checkout</router-link>
           </button>
           <button class="secondary-button-cart">
-            <router-link to="../category/Business"
+            <router-link :to="{ path: '../category/Business' }"
               >Continue Shopping</router-link
             >
           </button>
@@ -50,15 +52,16 @@
 
 <script>
 import CartTable from "@/components/CartTable";
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 export default {
   name: "Cart",
   components: { CartTable },
   computed: mapState(["cart"]),
   methods: {
-    clearCart() {
-      this.$store.dispatch("clearCart");
+    emptyCart() {
+      this.clearCart();
     },
+    ...mapActions(["clearCart"]),
   },
 };
 </script>

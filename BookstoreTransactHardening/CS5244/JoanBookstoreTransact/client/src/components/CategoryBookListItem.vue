@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "categoryBookListItem",
@@ -45,7 +45,7 @@ export default {
   computed: mapState(["selectedCategoryBooks"]),
   methods: {
     addToCart(book) {
-      this.$store.dispatch("addToCart", book);
+      this.addToCart(book);
     },
     bookImageFileName: function (book) {
       let name = book.title.toLowerCase();
@@ -55,6 +55,7 @@ export default {
       name = name.replace("#", "");
       return `${name}.png`;
     },
+    ...mapActions(["addToCart"]),
   },
 };
 </script>

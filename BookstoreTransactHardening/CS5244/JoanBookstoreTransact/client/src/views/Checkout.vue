@@ -215,7 +215,9 @@
         have!
       </h1>
       <button class="cta-button cta-small-empty">
-        <router-link to="../category/Business">Continue Shopping</router-link>
+        <router-link :to="{ path: '../category/Business' }"
+          >Continue Shopping</router-link
+        >
       </button>
     </section>
   </div>
@@ -231,7 +233,7 @@ import {
 
 import isCreditCard from "validator/lib/isCreditCard";
 import isMobilePhone from "validator/lib/isMobilePhone";
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 const phone = (value) => isMobilePhone(value, "en-US");
 const creditCard = (value) => isCreditCard(value);
@@ -303,16 +305,15 @@ export default {
       } else {
         this.checkoutStatus = "PENDING";
         setTimeout(() => {
-          this.$store
-            .dispatch("placeOrder", {
-              name: this.name,
-              address: this.address,
-              phone: this.phone,
-              email: this.email,
-              ccNumber: this.ccNumber,
-              ccExpiryMonth: this.ccExpiryMonth,
-              ccExpiryYear: this.ccExpiryYear,
-            })
+          this.placeOrder({
+            name: this.name,
+            address: this.address,
+            phone: this.phone,
+            email: this.email,
+            ccNumber: this.ccNumber,
+            ccExpiryMonth: this.ccExpiryMonth,
+            ccExpiryYear: this.ccExpiryYear,
+          })
             .then(() => {
               this.checkoutStatus = "OK";
               this.$router.push({ name: "confirmation" });
@@ -324,10 +325,10 @@ export default {
         }, 1000);
       }
     },
-
     yearFrom(index) {
       return new Date().getFullYear() + index;
     },
+    ...mapActions(["placeOrder"]),
   },
 };
 </script>
