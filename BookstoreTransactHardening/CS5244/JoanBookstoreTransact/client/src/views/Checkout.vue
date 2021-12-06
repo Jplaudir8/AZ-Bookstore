@@ -153,8 +153,12 @@
               </option>
             </select>
             <span class="exp-date-separator">/</span>
-            <select>
-              <option v-for="(year, index) in 15" :key="index" :value="index">
+            <select v-model="ccExpiryYear">
+              <option
+                v-for="(year, index) in 15"
+                :key="index"
+                :value="yearFrom(index)"
+              >
                 {{ yearFrom(index) }}
               </option>
             </select>

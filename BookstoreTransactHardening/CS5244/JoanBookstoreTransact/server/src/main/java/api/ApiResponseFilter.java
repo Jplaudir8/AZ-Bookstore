@@ -16,16 +16,16 @@ import java.io.IOException;
 @Priority(Priorities.AUTHENTICATION)
 public class ApiResponseFilter implements ContainerResponseFilter {
 
-	public ApiResponseFilter() {
-	}
+    public ApiResponseFilter() {
+    }
 
-	@Override
-	public void filter(ContainerRequestContext requestContext,
-					   ContainerResponseContext responseContext) throws IOException {
-		MultivaluedMap<String, Object> headers = responseContext.getHeaders();
-		headers.putSingle("Cache-Control", "must-revalidate, no-cache, no-store, no-transform, private, proxy-revalidate, max-age=5");
-		headers.putSingle("X-Frame-Options", "DENY");
-		headers.putSingle("X-XSS-Protection", "1; mode=block");
-		headers.putSingle("X-Content-Type", "nosniff");
-	}
+    @Override
+    public void filter(ContainerRequestContext requestContext,
+                       ContainerResponseContext responseContext) throws IOException {
+        MultivaluedMap<String, Object> headers = responseContext.getHeaders();
+        headers.putSingle("Cache-Control", "must-revalidate, no-cache, no-store, no-transform, private, proxy-revalidate, max-age=5");
+        headers.putSingle("X-Frame-Options", "DENY");
+        headers.putSingle("X-XSS-Protection", "1; mode=block");
+        headers.putSingle("X-Content-Type", "nosniff");
+    }
 }

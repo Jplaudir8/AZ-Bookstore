@@ -76,12 +76,6 @@ public class DefaultOrderService implements OrderService {
 			throw new BookstoreDbException("Error during close connection for customer order", e);
 		}
 	}
-//	private Date getDate(String monthString, String yearString) {
-//		int lastDayOfMonth = YearMonth.of(Integer.parseInt(yearString), Integer.parseInt(monthString)).lengthOfMonth();
-//		Date date = new GregorianCalendar(Integer.parseInt(yearString) + 1, Integer.parseInt(monthString) - 1, lastDayOfMonth).getTime();
-//		return date;
-//		//TODO need to double check its working as expected
-//	}
 
 	private Date getDate(String monthString, String yearString) {
 		int month = Integer.parseInt(monthString);

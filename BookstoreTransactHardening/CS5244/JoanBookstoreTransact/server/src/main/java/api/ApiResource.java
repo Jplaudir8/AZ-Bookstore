@@ -98,7 +98,7 @@ public class ApiResource {
     @Path("categories/name/{category-name}")
     @Produces(MediaType.APPLICATION_JSON)
     public Category categoryByName(@PathParam("category-name") String categoryName,
-                                     @Context HttpServletRequest request) {
+                                   @Context HttpServletRequest request) {
         try {
             Category result = categoryDao.findByName(categoryName);
             if (result == null) {
@@ -114,7 +114,7 @@ public class ApiResource {
     @Path("categories/name/{category-name}/books")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Book> booksByCategoryName(@PathParam("category-name") String categoryName,
-                                   @Context HttpServletRequest request) {
+                                          @Context HttpServletRequest request) {
         try {
             Category categoryResult = categoryDao.findByName(categoryName);
             List<Book> bookResult = bookDao.findByCategoryId(categoryResult.getCategoryId());
@@ -131,8 +131,8 @@ public class ApiResource {
     @Path("categories/name/{category-name}/suggested-books")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Book> suggestedBooksByCategoryName(@PathParam("category-name") String categoryName,
-                                          @QueryParam("limit") @DefaultValue("3") int limit,
-                                          @Context HttpServletRequest request) {
+                                                   @QueryParam("limit") @DefaultValue("3") int limit,
+                                                   @Context HttpServletRequest request) {
         try {
             Category categoryResult = categoryDao.findByName(categoryName);
             List<Book> bookResult = bookDao.findRandomByCategoryId(categoryResult.getCategoryId(), limit);
