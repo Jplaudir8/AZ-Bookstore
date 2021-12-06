@@ -30,15 +30,25 @@ public class Customer {
         return customerName;
     }
 
-    public String getAddress() { return address; }
+    public String getAddress() {
+        return address;
+    }
 
-    public String getPhone() { return phone; }
+    public String getPhone() {
+        return phone;
+    }
 
-    public String getEmail() { return email; }
+    public String getEmail() {
+        return email;
+    }
 
-    public String getCcNumber() { return ccNumber; }
+    public String getCcNumber() {
+        return ccNumber;
+    }
 
-    public Date getCcExpDate() { return ccExpDate; }
+    public Date getCcExpDate() {
+        return ccExpDate;
+    }
 
     @Override
     public String toString() {

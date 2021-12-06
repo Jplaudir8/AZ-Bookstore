@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import business.BookstoreDbException.BookstoreQueryDbException;
 import business.BookstoreDbException.BookstoreUpdateDbException;
 
@@ -60,7 +61,7 @@ public class OrderDaoJdbc implements OrderDao {
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(FIND_ALL_SQL);
              ResultSet resultSet = statement.executeQuery()) {
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 Order order = readOrder(resultSet);
                 result.add(order);
             }

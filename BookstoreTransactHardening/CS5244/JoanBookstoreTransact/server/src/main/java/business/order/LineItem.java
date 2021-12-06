@@ -20,7 +20,9 @@ public class LineItem {
         return orderId;
     }
 
-    public int getQuantity() { return quantity; }
+    public int getQuantity() {
+        return quantity;
+    }
 
     @Override
     public String toString() {
