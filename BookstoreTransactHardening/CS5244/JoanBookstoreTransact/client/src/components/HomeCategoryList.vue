@@ -2,7 +2,7 @@
   <div class="some-categories">
     <div class="a-category">
       <div>
-        <template v-for="book in $store.state.suggestedCategoryBooksA">
+        <template v-for="book in suggestedCategoryBooksA">
           <img
             :src="require('@/assets/images/books/' + bookImageFileName(book))"
             :key="book.bookId"
@@ -18,7 +18,7 @@
 
     <div class="a-category">
       <div>
-        <template v-for="book in $store.state.suggestedCategoryBooksB">
+        <template v-for="book in suggestedCategoryBooksB">
           <img
             :src="require('@/assets/images/books/' + bookImageFileName(book))"
             :key="book.bookId"
@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "HomeCategoryList",
   created: function () {
@@ -50,6 +52,7 @@ export default {
       return `${name}.png`;
     },
   },
+  computed: mapState(["suggestedCategoryBooksA", "suggestedCategoryBooksB"]),
 };
 </script>
 

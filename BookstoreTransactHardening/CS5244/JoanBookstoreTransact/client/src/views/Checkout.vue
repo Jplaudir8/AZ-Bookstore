@@ -204,9 +204,7 @@
         </div>
         <p>
           Your credit card will be charged
-          <span class="less-bold">{{
-            (cart.subtotal + cart.surcharge) | asDollarsAndCents
-          }}</span>
+          <span class="less-bold">{{ cart.total | asDollarsAndCents }}</span>
         </p>
       </div>
     </section>
@@ -233,6 +231,7 @@ import {
 
 import isCreditCard from "validator/lib/isCreditCard";
 import isMobilePhone from "validator/lib/isMobilePhone";
+import { mapState } from "vuex";
 
 const phone = (value) => isMobilePhone(value, "en-US");
 const creditCard = (value) => isCreditCard(value);
@@ -276,9 +275,6 @@ export default {
   },
 
   computed: {
-    cart() {
-      return this.$store.state.cart;
-    },
     months() {
       return [
         "January",
@@ -295,6 +291,7 @@ export default {
         "December",
       ];
     },
+    ...mapState(["cart"]),
   },
 
   methods: {
@@ -328,7 +325,6 @@ export default {
       }
     },
 
-    /* NOTE: For example yearFrom(0) == 2021 */
     yearFrom(index) {
       return new Date().getFullYear() + index;
     },
@@ -406,6 +402,7 @@ h1 {
   flex-grow: 1;
   overflow: auto;
 }
+
 .checkout-page-body {
   display: flex;
   flex-direction: column;

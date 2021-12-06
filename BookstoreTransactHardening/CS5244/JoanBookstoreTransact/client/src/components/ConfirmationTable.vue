@@ -3,15 +3,14 @@
     <p class="table-head">Book</p>
     <p class="table-head">Quantity</p>
     <p class="table-head">Price</p>
-    <template v-for="(item, index) in $store.state.orderDetails.lineItems">
+    <template v-for="(item, index) in orderDetails.lineItems">
       <p class="title-column" :key="index">
-        {{ $store.state.orderDetails.books[index].title }}
+        {{ orderDetails.books[index].title }}
       </p>
       <p class="quantity-column" :key="index">x {{ item.quantity }}</p>
       <p class="price-column" :key="index">
         {{
-          (item.quantity * $store.state.orderDetails.books[index].price)
-            | asDollarsAndCents
+          (item.quantity * orderDetails.books[index].price) | asDollarsAndCents
         }}
       </p>
     </template>
@@ -19,8 +18,10 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "ConfirmationTable",
+  computed: mapState(["orderDetails"]),
 };
 </script>
 

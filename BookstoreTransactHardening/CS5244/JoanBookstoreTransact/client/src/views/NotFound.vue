@@ -1,5 +1,5 @@
 <template>
-  <div class="not-found">
+  <div>
     <h1>404</h1>
     <h3>Page Not Found!!</h3>
     <img src="@/assets/images/404_IMG.png" />
@@ -13,7 +13,7 @@ export default {
 </script>
 
 <style scoped>
-.not-found {
+div {
   flex-grow: 1;
   overflow: auto;
   display: flex;

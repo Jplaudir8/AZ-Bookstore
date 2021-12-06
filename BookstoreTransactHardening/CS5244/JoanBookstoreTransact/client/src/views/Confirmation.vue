@@ -1,6 +1,6 @@
 <template>
   <div id="confirmationView">
-    <section v-if="!$store.state.orderDetails" id="confirmation-invalid">
+    <section v-if="!orderDetails">
       <h1>No order has been placed yet...</h1>
       <button class="cta-button cta-small-empty">
         <router-link to="../category/Business">Continue Shopping</router-link>
@@ -15,33 +15,25 @@
 
       <p class="top-info">
         Confirmation #:
-        {{ $store.state.orderDetails.order.confirmationNumber }}
+        {{ orderDetails.order.confirmationNumber }}
       </p>
       <p class="top-info">
         Time:
-        {{
-          transactionDateFormat(
-            new Date($store.state.orderDetails.order.dateCreated)
-          )
-        }}
+        {{ new Date(orderDetails.order.dateCreated) | transactionDateFormat }}
       </p>
 
       <div id="customerInfo">
         <h3>Your Information</h3>
-        <p>{{ $store.state.orderDetails.customer.customerName }}</p>
-        <p>{{ $store.state.orderDetails.customer.address }}</p>
-        <p>{{ $store.state.orderDetails.customer.email }}</p>
+        <p>{{ orderDetails.customer.customerName }}</p>
+        <p>{{ orderDetails.customer.address }}</p>
+        <p>{{ orderDetails.customer.email }}</p>
         <p>
-          {{ formatPhoneNumber($store.state.orderDetails.customer.phone) }}
+          {{ orderDetails.customer.phone | formatPhoneNumber }}
         </p>
         <p>
           **** **** ****
-          {{ retrieveLast4Digits($store.state.orderDetails.customer.ccNumber) }}
-          ({{
-            ccExpDateFormat(
-              new Date($store.state.orderDetails.customer.ccExpDate)
-            )
-          }})
+          {{ orderDetails.customer.ccNumber | retrieveLast4DigitsOfCard }}
+          ({{ new Date(orderDetails.customer.ccExpDate) | ccExpDateFormat }})
         </p>
       </div>
 
@@ -54,20 +46,18 @@
             <p>Subtotal:</p>
             <p>
               {{
-                ($store.state.orderDetails.order.amount -
-                  $store.state.cart.surcharge)
-                  | asDollarsAndCents
+                (orderDetails.order.amount - cart.surcharge) | asDollarsAndCents
               }}
             </p>
           </div>
           <div class="totals-child">
             <p>Surcharge:</p>
-            <p>{{ $store.state.cart.surcharge | asDollarsAndCents }}</p>
+            <p>{{ cart.surcharge | asDollarsAndCents }}</p>
           </div>
           <div class="totals-child bold-font">
             <p>Total:</p>
             <p>
-              {{ $store.state.orderDetails.order.amount | asDollarsAndCents }}
+              {{ orderDetails.order.amount | asDollarsAndCents }}
             </p>
           </div>
         </div>
@@ -78,60 +68,12 @@
 
 <script>
 import ConfirmationTable from "@/components/ConfirmationTable";
-// import mapState from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "Confirmation",
   components: { ConfirmationTable },
-  methods: {
-    transactionDateFormat(date) {
-      var hours = date.getHours();
-      var minutes = date.getMinutes();
-      var seconds = date.getSeconds();
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-
-      var strTime = hours + ":" + minutes + ":" + seconds;
-      return (
-        date.getFullYear() +
-        "-" +
-        (date.getMonth() + 1) +
-        "-" +
-        date.getDate() +
-        "  " +
-        strTime
-      );
-    },
-    ccExpDateFormat(date) {
-      return date.getMonth() + 1 + "-" + date.getFullYear();
-    },
-    retrieveLast4Digits(ccNumber) {
-      var lastIdx = ccNumber.length - 1;
-      var digits = "";
-      for (var i = 0; i < 4; i++) {
-        digits += ccNumber[lastIdx--];
-      }
-      return digits;
-    },
-    getSubtotal: function () {
-      const subtotal = this.$store.state.cart.items.reduce(
-        (accumulator, item) => {
-          return accumulator + item.book.price * item.quantity;
-        },
-        0
-      );
-      return subtotal;
-    },
-    formatPhoneNumber(phoneNumber) {
-      var firstTriplet = phoneNumber.substring(0, 3);
-      var secondTriplet = phoneNumber.substring(3, 6);
-      var lastFour = phoneNumber.substring(6, 10);
-      return "(" + firstTriplet + ")" + " " + secondTriplet + "-" + lastFour;
-    },
-  },
-  // computed: {
-  //   ...mapState(["orderDetails"]),
-  // },
+  computed: mapState(["orderDetails", "cart"]),
 };
 </script>
 
@@ -207,14 +149,14 @@ h3 {
   font-weight: 500;
 }
 
-#confirmation-invalid {
+section {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 1.6em;
 }
 
-#confirmation-invalid h1 {
+section h1 {
   margin: 1em;
   line-height: 1.5em;
   margin: 6em 0.4em 3em;

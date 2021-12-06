@@ -21,6 +21,45 @@ Vue.filter("asDollarsAndCents", function (cents) {
   return PriceFormatter.format(cents / 100.0);
 });
 
+Vue.filter("retrieveLast4DigitsOfCard", function (ccNumber) {
+  var lastIdx = ccNumber.length - 1;
+  var digits = "";
+  for (var i = 0; i < 4; i++) {
+    digits += ccNumber[lastIdx--];
+  }
+  return digits;
+});
+
+Vue.filter("transactionDateFormat", function (date) {
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  var strTime = hours + ":" + minutes + ":" + seconds;
+  return (
+    date.getFullYear() +
+    "-" +
+    (date.getMonth() + 1) +
+    "-" +
+    date.getDate() +
+    "  " +
+    strTime
+  );
+});
+
+Vue.filter("formatPhoneNumber", function (phoneNumber) {
+  var firstTriplet = phoneNumber.substring(0, 3);
+  var secondTriplet = phoneNumber.substring(3, 6);
+  var lastFour = phoneNumber.substring(6, 10);
+  return "(" + firstTriplet + ")" + " " + secondTriplet + "-" + lastFour;
+});
+
+Vue.filter("ccExpDateFormat", function (date) {
+  return date.getMonth() + 1 + "-" + date.getFullYear();
+});
+
 new Vue({
   router,
   store,

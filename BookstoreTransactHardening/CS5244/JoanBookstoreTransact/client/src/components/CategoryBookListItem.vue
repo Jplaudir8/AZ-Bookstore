@@ -1,4 +1,4 @@
-<template>
+<template v-for="book in selectedCategoryBooks">
   <div class="grid-item">
     <div class="book-and-read-now">
       <img
@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "categoryBookListItem",
   props: {
@@ -40,6 +42,7 @@ export default {
     },
   },
   created: function () {},
+  computed: mapState(["selectedCategoryBooks"]),
   methods: {
     addToCart(book) {
       this.$store.dispatch("addToCart", book);

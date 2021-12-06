@@ -5,7 +5,7 @@
     <p class="unit-price-column-header">Unit Price</p>
     <p class="table-head">Quantity</p>
     <p class="amount-column-header">Amount</p>
-    <template v-for="item in $store.state.cart.items">
+    <template v-for="item in cart.items">
       <img
         :key="item.book.bookId"
         :src="require('@/assets/images/books/' + bookImageFileName(item.book))"
@@ -33,9 +33,14 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "CartTable",
   methods: {
+    updateCart(book, quantity) {
+      this.$store.dispatch("updateCart", { book, quantity });
+    },
     bookImageFileName: function (book) {
       let name = book.title.toLowerCase();
       name = name.replace(/ /g, "-");
@@ -44,10 +49,8 @@ export default {
       name = name.replace("#", "");
       return `${name}.png`;
     },
-    updateCart(book, quantity) {
-      this.$store.dispatch("updateCart", { book, quantity });
-    },
   },
+  computed: mapState(["cart"]),
 };
 </script>
 

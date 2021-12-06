@@ -1,6 +1,6 @@
 <template>
   <div class="cart-page">
-    <section v-if="$store.state.cart.numberOfItems === 0" class="empty-cart">
+    <section v-if="cart.empty" class="empty-cart">
       <h1>Your cart is empty... What about we grab some books?</h1>
       <img src="@/assets/images/empty-cart-image.png" />
       <button class="cta-button cta-small-empty">
@@ -17,7 +17,7 @@
           </button>
           <p class="bigger-subtitle">
             <span class="subtitle">Subtotal: </span
-            >{{ this.getSubtotal() | asDollarsAndCents }}
+            >{{ cart.subtotal | asDollarsAndCents }}
           </p>
         </div>
       </div>
@@ -27,11 +27,11 @@
           <div class="details-subtitles">
             <p>
               <span class="subtitle">Items in total:</span>
-              {{ $store.state.cart.numberOfItems }}
+              {{ cart.numberOfItems }}
             </p>
             <p>
               <span class="subtitle">Subtotal:</span>
-              {{ this.getSubtotal() | asDollarsAndCents }}
+              {{ cart.subtotal | asDollarsAndCents }}
             </p>
           </div>
           <button class="cta-button-cart">
@@ -50,19 +50,12 @@
 
 <script>
 import CartTable from "@/components/CartTable";
+import { mapState } from "vuex";
 export default {
   name: "Cart",
   components: { CartTable },
+  computed: mapState(["cart"]),
   methods: {
-    getSubtotal: function () {
-      const subtotal = this.$store.state.cart.items.reduce(
-        (accumulator, item) => {
-          return accumulator + item.book.price * item.quantity;
-        },
-        0
-      );
-      return subtotal;
-    },
     clearCart() {
       this.$store.dispatch("clearCart");
     },
