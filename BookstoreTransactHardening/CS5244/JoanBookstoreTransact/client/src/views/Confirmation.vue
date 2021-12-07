@@ -1,5 +1,5 @@
 <template>
-  <div id="confirmationView">
+  <div id="confirmation-view">
     <section v-if="!orderDetails">
       <h1>No order has been placed yet...</h1>
       <button class="cta-button cta-small-empty">
@@ -15,16 +15,16 @@
       />
       <h1>Thank you for your order!</h1>
 
-      <p class="top-info">
+      <p>
         Confirmation #:
         {{ orderDetails.order.confirmationNumber }}
       </p>
-      <p class="top-info">
+      <p>
         Time:
         {{ new Date(orderDetails.order.dateCreated) | transactionDateFormat }}
       </p>
 
-      <div id="customerInfo">
+      <div id="customer-info">
         <h3>Your Information</h3>
         <p>{{ orderDetails.customer.customerName }}</p>
         <p>{{ orderDetails.customer.address }}</p>
@@ -42,8 +42,8 @@
       <h3>What you ordered</h3>
       <confirmation-table> </confirmation-table>
 
-      <div id="totals">
-        <div class="totals-child">
+      <div id="totals-section">
+        <div>
           <p>Subtotal:</p>
           <p>
             {{
@@ -51,11 +51,11 @@
             }}
           </p>
         </div>
-        <div class="totals-child">
+        <div>
           <p>Surcharge:</p>
           <p>{{ cart.surcharge | asDollarsAndCents }}</p>
         </div>
-        <div class="totals-child bold-font">
+        <div>
           <p>Total:</p>
           <p>
             {{ orderDetails.order.amount | asDollarsAndCents }}
@@ -83,7 +83,7 @@ h1 {
   font-size: 1.3em;
 }
 
-#confirmationView {
+#confirmation-view {
   flex-grow: 1;
   overflow: auto;
   display: flex;
@@ -106,12 +106,16 @@ h3 {
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
 }
 
+#card > p {
+  margin: 0.25em 0;
+}
+
 #confirmation-check {
   margin: 0.5em 1em 1em;
   width: 50px;
 }
 
-#totals {
+#totals-section {
   display: flex;
   justify-content: end;
   width: 10em;
@@ -121,29 +125,25 @@ h3 {
   min-width: 140px;
 }
 
-.totals-child {
+#totals-section > div {
   display: flex;
   justify-content: space-between;
   margin: 0.2em 0;
 }
 
-#customerInfo {
+#totals-section > div:last-child {
+  font-weight: 500;
+}
+
+#customer-info {
   display: flex;
   flex-direction: column;
   align-self: start;
   margin: 0.9em 0;
 }
 
-#customerInfo > p {
+#customer-info > p {
   margin: 0.15em 0;
-}
-
-.top-info {
-  margin: 0.25em 0;
-}
-
-.bold-font {
-  font-weight: 500;
 }
 
 section {

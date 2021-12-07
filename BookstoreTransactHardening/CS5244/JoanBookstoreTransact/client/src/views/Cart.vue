@@ -102,15 +102,17 @@ export default {
   align-items: center;
   text-align: center;
   font-size: 1.6em;
-  margin: 5em 0 3em;
+  margin: 0.5em 0 3em;
 }
 .empty-cart h1 {
   line-height: 1.5em;
+  margin: 4em 0.4em 1.5em;
 }
 
 .empty-cart img {
   width: 350px;
-  margin: 4em 0 2.5em;
+  margin: 2em 0 2.5em;
+  padding: 0.5em;
 }
 .outer-layout {
   display: flex;

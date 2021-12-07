@@ -336,7 +336,7 @@ export default {
 <style scoped>
 h1 {
   font-size: 1.3em;
-  margin: 0.8em 0.2em 1.2em 4em;
+  margin: 0.8em 0.2em 1.2em 4.5em;
 }
 
 .less-bold {
@@ -357,7 +357,7 @@ h1 {
 }
 
 .total-info-section {
-  margin-left: 4em;
+  margin-left: 6.2em;
   text-align: center;
 }
 
@@ -455,7 +455,7 @@ form > .button {
   align-self: center;
   min-width: 220px;
   height: 2.3em;
-  margin: 1em 0 1em 5em;
+  margin: 1em 0 1em 6.3em;
   background-color: var(--cta-color);
   border: 0;
   border-radius: 0.3em;
@@ -475,7 +475,7 @@ form > .button[disabled] {
 }
 
 .checkoutStatusBox {
-  margin: 0.2em 1em 0.7em 4.5em;
+  margin: 0.2em 1em 0.7em 7.5em;
   padding: 1em;
   text-align: center;
   color: red;

@@ -3,12 +3,17 @@
     <div class="a-category">
       <div>
         <template v-for="book in suggestedCategoryBooksA">
-          <img
-            :src="require('@/assets/images/books/' + bookImageFileName(book))"
-            :key="book.bookId"
-            :alt="book.title"
-            :title="book.title"
-          />
+          <router-link
+            :to="{ path: '../category/Best Seller' }"
+            v-bind:key="book.Id"
+          >
+            <img
+              :src="require('@/assets/images/books/' + bookImageFileName(book))"
+              :key="book.bookId"
+              :alt="book.title"
+              :title="book.title"
+            />
+          </router-link>
         </template>
       </div>
       <button class="secondary-button">
@@ -21,12 +26,17 @@
     <div class="a-category">
       <div>
         <template v-for="book in suggestedCategoryBooksB">
-          <img
-            :src="require('@/assets/images/books/' + bookImageFileName(book))"
-            :key="book.bookId"
-            :alt="book.title"
-            :title="book.title"
-          />
+          <router-link
+            :to="{ path: '../category/On Sale' }"
+            v-bind:key="book.Id"
+          >
+            <img
+              :src="require('@/assets/images/books/' + bookImageFileName(book))"
+              :key="book.bookId"
+              :alt="book.title"
+              :title="book.title"
+            />
+          </router-link>
         </template>
       </div>
       <button class="secondary-button">
