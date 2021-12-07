@@ -16,20 +16,22 @@
             />
           </div>
           <template v-if="$v.name.$error">
-            <span class="error" v-if="!$v.name.required">Name is required</span>
-            <span class="error" v-else-if="!$v.name.minLength">
+            <span class="field-error" v-if="!$v.name.required"
+              >Name is required</span
+            >
+            <span class="field-error" v-else-if="!$v.name.minLength">
               <em
                 >Name must have at least
                 {{ $v.name.$params.minLength.min }} letters.</em
               >
             </span>
-            <span class="error" v-else-if="!$v.name.maxLength">
+            <span class="field-error" v-else-if="!$v.name.maxLength">
               <em
                 >Name can have at most
                 {{ $v.name.$params.maxLength.max }} letters.</em
               >
             </span>
-            <span class="error" v-else
+            <span class="field-error" v-else
               ><em>An unexpected error occurred.</em></span
             >
           </template>
@@ -46,22 +48,22 @@
             />
           </div>
           <template v-if="$v.address.$error">
-            <span class="error" v-if="!$v.address.required"
+            <span class="field-error" v-if="!$v.address.required"
               ><em>Address is required</em></span
             >
-            <span class="error" v-else-if="!$v.address.minLength">
+            <span class="field-error" v-else-if="!$v.address.minLength">
               <em
                 >Address must have at least
                 {{ $v.name.$params.minLength.min }} letters.</em
               >
             </span>
-            <span class="error" v-else-if="!$v.address.maxLength">
+            <span class="field-error" v-else-if="!$v.address.maxLength">
               <em
                 >Address can have at most
                 {{ $v.name.$params.maxLength.max }} letters.</em
               >
             </span>
-            <span class="error" v-else
+            <span class="field-error" v-else
               ><em>An unexpected error occurred. </em></span
             >
           </template>
@@ -80,13 +82,13 @@
             />
           </div>
           <template v-if="$v.phone.$error">
-            <span class="error" v-if="!$v.phone.required"
+            <span class="field-error" v-if="!$v.phone.required"
               ><em>Phone is required</em></span
             >
-            <span class="error" v-else-if="!$v.phone.phone">
+            <span class="field-error" v-else-if="!$v.phone.phone">
               <em>Please enter a valid phone number.</em>
             </span>
-            <span class="error" v-else
+            <span class="field-error" v-else
               ><em>An unexpected error occurred.</em></span
             >
           </template>
@@ -104,13 +106,13 @@
             />
           </div>
           <template v-if="$v.email.$error">
-            <span class="error" v-if="!$v.email.required"
+            <span class="field-error" v-if="!$v.email.required"
               ><em>E-mail is required</em></span
             >
-            <span class="error" v-else-if="!$v.email.email">
+            <span class="field-error" v-else-if="!$v.email.email">
               <em>Please enter a valid email address.</em>
             </span>
-            <span class="error" v-else
+            <span class="field-error" v-else
               ><em>An unexpected error occurred.</em></span
             >
           </template>
@@ -128,13 +130,13 @@
             />
           </div>
           <template v-if="$v.ccNumber.$error">
-            <span class="error" v-if="!$v.ccNumber.required"
+            <span class="field-error" v-if="!$v.ccNumber.required"
               ><em>A credit card is required</em></span
             >
-            <span class="error" v-else-if="!$v.ccNumber.creditCard">
+            <span class="field-error" v-else-if="!$v.ccNumber.creditCard">
               <em>Must enter a valid card number.</em>
             </span>
-            <span class="error" v-else
+            <span class="field-error" v-else
               ><em> An unexpected error occurred. </em></span
             >
           </template>
@@ -444,7 +446,7 @@ form > div > div label {
   margin-right: 0.8em;
 }
 
-form > div > .error {
+.field-error {
   color: red;
   font-style: italic;
   font-size: 0.86em;
